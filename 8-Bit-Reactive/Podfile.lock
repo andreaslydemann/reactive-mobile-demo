@@ -1,0 +1,28 @@
+PODS:
+  - Realm (3.11.0):
+    - Realm/Headers (= 3.11.0)
+  - Realm/Headers (3.11.0)
+  - RealmSwift (3.11.0):
+    - Realm (= 3.11.0)
+  - Siesta (1.4.2):
+    - Siesta/Core (= 1.4.2)
+  - Siesta/Core (1.4.2)
+
+DEPENDENCIES:
+  - RealmSwift
+  - Siesta (~> 1.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Realm
+    - RealmSwift
+    - Siesta
+
+SPEC CHECKSUMS:
+  Realm: 92f09a102692b96a9a10e9617f214f15c5ab85fc
+  RealmSwift: 5f0481cd658bb751c509314b964a35eaa264d2cf
+  Siesta: 337a9c39c9b78bba904286310c86562a886efdab
+
+PODFILE CHECKSUM: 5c0fb0b78985dfc092528e64d85c252467bd0fec
+
+COCOAPODS: 1.5.3
