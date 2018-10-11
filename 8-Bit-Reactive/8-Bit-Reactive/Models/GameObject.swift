@@ -7,7 +7,7 @@ class GameObject: Object, Codable {
         return try! jsonDecoder.decode(self, from: jsonData)
     }
 
-    func save() -> Self {
+    @discardableResult func save() -> Self {
         DB.save(self)
         return self
     }
