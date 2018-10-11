@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password:
+  pool: 5
+
+development:
+  <<: *default
+  database: the-8-bit-api_development
+
+test:
+  <<: *default
+  database: the-8-bit-api_test
