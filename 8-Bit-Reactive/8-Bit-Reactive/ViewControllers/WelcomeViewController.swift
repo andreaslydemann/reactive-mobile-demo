@@ -1,21 +1,23 @@
-//
-//  WelcomeViewController.swift
-//  8-Bit-Reactive
-//
-//  Created by Chris Fuentes on 10/11/18.
-//  Copyright © 2018 microsoft. All rights reserved.
-//
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, UITextFieldDelegate {
+
+    @IBOutlet var highScoreTable: UITableView!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var startButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.nameTextField.delegate = self
+        
     }
-    
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
 
     /*
     // MARK: - Navigation

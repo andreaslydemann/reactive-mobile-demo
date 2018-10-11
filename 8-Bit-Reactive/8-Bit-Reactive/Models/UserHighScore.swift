@@ -1,7 +1,15 @@
 
 import RealmSwift
 
-class UserHighScore: Object, Codable {
+class UserHighScore: GameObject {
     @objc dynamic var name = ""
-    @objc dynamic var highScore = 0
+    @objc dynamic var score = 0
+
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+
+    override static func indexedProperties() -> [String] {
+        return ["score"]
+    }
 }

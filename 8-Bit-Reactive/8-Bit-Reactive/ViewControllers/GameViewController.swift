@@ -14,6 +14,8 @@ class GameViewController: UIViewController, ARSKViewDelegate {
         sceneView.showsFPS = true
         sceneView.showsNodeCount = true
 
+        
+
         if let scene = SKScene(fileNamed: "GameScene") {
             sceneView.presentScene(scene)
         }
