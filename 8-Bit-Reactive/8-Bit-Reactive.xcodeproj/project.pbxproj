@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4202EF9D1B818BB06005F1D9 /* Pods_8_Bit_Reactive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 899DF75A024036791DF4F9A6 /* Pods_8_Bit_Reactive.framework */; };
-		8975872A216F9EE500D43921 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758729216F9EE500D43921 /* API.swift */; };
+		8975872A216F9EE500D43921 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758729216F9EE500D43921 /* APIClient.swift */; };
 		8975872C216F9FB400D43921 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8975872B216F9FB400D43921 /* WelcomeViewController.swift */; };
 		8975872E216FA3EC00D43921 /* UserHighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8975872D216FA3EC00D43921 /* UserHighScore.swift */; };
 		89758730216FA62B00D43921 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8975872F216FA62B00D43921 /* GameObject.swift */; };
@@ -39,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		4F7B29FD49E0DE94810841E6 /* Pods_8_Bit_ReactiveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_8_Bit_ReactiveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		89758729216F9EE500D43921 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		89758729216F9EE500D43921 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		8975872B216F9FB400D43921 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8975872D216FA3EC00D43921 /* UserHighScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHighScore.swift; sourceTree = "<group>"; };
 		8975872F216FA62B00D43921 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 		89A8CCA6216F39FA0094330F /* API */ = {
 			isa = PBXGroup;
 			children = (
-				89758729216F9EE500D43921 /* API.swift */,
+				89758729216F9EE500D43921 /* APIClient.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -389,7 +389,7 @@
 				89758733216FAEF200D43921 /* HighScoreTableViewCell.swift in Sources */,
 				89A8CCAA216F469E0094330F /* DB.swift in Sources */,
 				89A8CC85216F371A0094330F /* GameScene.swift in Sources */,
-				8975872A216F9EE500D43921 /* API.swift in Sources */,
+				8975872A216F9EE500D43921 /* APIClient.swift in Sources */,
 				89A8CC81216F371A0094330F /* AppDelegate.swift in Sources */,
 				8975872C216F9FB400D43921 /* WelcomeViewController.swift in Sources */,
 				89758735216FB3B400D43921 /* User.swift in Sources */,
