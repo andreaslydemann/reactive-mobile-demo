@@ -14,6 +14,7 @@
 		89758730216FA62B00D43921 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8975872F216FA62B00D43921 /* GameObject.swift */; };
 		89758733216FAEF200D43921 /* HighScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758732216FAEF200D43921 /* HighScoreTableViewCell.swift */; };
 		89758735216FB3B400D43921 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89758734216FB3B400D43921 /* User.swift */; };
+		897587392172499A00D43921 /* GameSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897587382172499A00D43921 /* GameSessionManager.swift */; };
 		89A8CC81216F371A0094330F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8CC80216F371A0094330F /* AppDelegate.swift */; };
 		89A8CC85216F371A0094330F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8CC84216F371A0094330F /* GameScene.swift */; };
 		89A8CC87216F371A0094330F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8CC86216F371A0094330F /* GameViewController.swift */; };
@@ -45,6 +46,7 @@
 		8975872F216FA62B00D43921 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		89758732216FAEF200D43921 /* HighScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreTableViewCell.swift; sourceTree = "<group>"; };
 		89758734216FB3B400D43921 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		897587382172499A00D43921 /* GameSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionManager.swift; sourceTree = "<group>"; };
 		899DF75A024036791DF4F9A6 /* Pods_8_Bit_Reactive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_8_Bit_Reactive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A8CC7D216F371A0094330F /* 8-Bit-Reactive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "8-Bit-Reactive.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A8CC80216F371A0094330F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
+		8975873A217249A100D43921 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				897587382172499A00D43921 /* GameSessionManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		89A8CC74216F371A0094330F = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +127,7 @@
 		89A8CC7F216F371A0094330F /* 8-Bit-Reactive */ = {
 			isa = PBXGroup;
 			children = (
+				8975873A217249A100D43921 /* Managers */,
 				89758731216FAED100D43921 /* TableViewCells */,
 				89A8CCAD216F4EC70094330F /* Extensions */,
 				89A8CCA8216F45AB0094330F /* Scenes */,
@@ -392,6 +403,7 @@
 				8975872A216F9EE500D43921 /* APIClient.swift in Sources */,
 				89A8CC81216F371A0094330F /* AppDelegate.swift in Sources */,
 				8975872C216F9FB400D43921 /* WelcomeViewController.swift in Sources */,
+				897587392172499A00D43921 /* GameSessionManager.swift in Sources */,
 				89758735216FB3B400D43921 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

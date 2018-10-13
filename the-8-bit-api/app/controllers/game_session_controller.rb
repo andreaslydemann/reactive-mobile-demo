@@ -2,7 +2,7 @@ class GameSessionController < ApplicationController
   SCORE_DIFFICULTY_INCREMENTS=10
 
   def start
-    name = params.fetch(:name).downcase
+    name = params.fetch(:name).downcase.chomp
     user = User.find_or_create_by(name: name)
 
     response = { name: user.name, high_score: user.high_score}
@@ -36,7 +36,7 @@ class GameSessionController < ApplicationController
   end
 
   def submit_score
-    name = params.fetch(:name).downcase
+    name = params.fetch(:name).downcase.chomp
     score = params.fetch(:score).to_i
 
     user = User.find_by_name(name)

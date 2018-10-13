@@ -1,47 +1,97 @@
 
 import UIKit
 import SpriteKit
+import RealmSwift
 import ARKit
 
 class GameViewController: UIViewController, ARSKViewDelegate {
     
     @IBOutlet var sceneView: ARSKView!
-    
+    @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var healthLabel: UILabel!
+    @IBOutlet var gameOverView: UIView!
+
+    private var currentUserNotificationToken: NotificationToken? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        sceneView.delegate = self
+        self.sceneView.delegate = self
 
-        sceneView.showsFPS = true
-        sceneView.showsNodeCount = true
-
-        
+        /* Debugging Views */
+        self.sceneView.showsFPS = true
+        self.sceneView.showsNodeCount = true
 
         if let scene = SKScene(fileNamed: "GameScene") {
-            sceneView.presentScene(scene)
+            self.sceneView.presentScene(scene)
         }
+
+        if let user = GameSessionManager.shared.getCurrentUser() {
+            self.currentUserNotificationToken = user.observe(userUpdated)
+        }
+    }
+
+    deinit {
+        self.currentUserNotificationToken?.invalidate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
-        sceneView.session.run(configuration)
+        self.sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        sceneView.session.pause()
+        self.sceneView.session.pause()
+    }
+
+    private func userUpdated(change: ObjectChange) {
+        switch change {
+        case .deleted:
+            print("Error: User deleted while game is in session!")
+            break
+
+        case .change(let changes):
+
+
+            let changeNames = changes.map { $0.name }
+            if changeNames.contains("score") {
+                self.updateScoreLabel()
+            }
+            break
+
+        case .error(let error):
+            print("Error receiving updates for user: \(error)")
+        }
+    }
+
+    private func updateScoreLabel() {
+        guard let user = GameSessionManager.shared.getCurrentUser() else { return }
+        if user.score == user.high_score {
+            self.scoreLabel.text = "New High Score: \(user.score)"
+        } else {
+            self.scoreLabel.text = "Score: \(user.score)"
+        }
+    }
+
+    private func updateHealthLabel() {
+        guard let user = GameSessionManager.shared.getCurrentUser() else { return }
+        self.scoreLabel.text = "Health: \(user.health)"
+
+        if user.health == 0 {
+            self.gameOver()
+        }
+    }
+
+    private func gameOver() {
+        self.sceneView.session.pause()
+        self.gameOverView.isHidden = false
     }
     
     // MARK: - ARSKViewDelegate
-    
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
         guard let anchor = anchor as? Anchor else { return nil }
         return SKSpriteNode(imageNamed: anchor.type.rawValue)
-//
-//        let labelNode = SKLabelNode(text: "👾")
-//        labelNode.horizontalAlignmentMode = .center
-//        labelNode.verticalAlignmentMode = .center
-//        return labelNode;
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -54,5 +104,9 @@ class GameViewController: UIViewController, ARSKViewDelegate {
     
     func sessionInterruptionEnded(_ session: ARSession) {
         print("Session interruption ended. Well it's about time!")
+    }
+
+    @IBAction func goHome(_ sender: Any) {
+        performSegue(withIdentifier: "unwindSegue", sender: self)
     }
 }

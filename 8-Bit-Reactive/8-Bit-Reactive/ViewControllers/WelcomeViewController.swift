@@ -55,11 +55,11 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
             self.userHighScores.append(contentsOf: userHighScores)
             self.highScoreTable.beginUpdates()
             self.highScoreTable.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
-                                 with: .automatic)
+                                           with: .automatic)
             self.highScoreTable.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
-                                 with: .automatic)
+                                           with: .automatic)
             self.highScoreTable.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
-                                 with: .automatic)
+                                           with: .automatic)
             self.highScoreTable.endUpdates()
             break
 
@@ -74,9 +74,12 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
         case .initial:
             break
 
+        /* TODO: Is this good design */
         case .update(let users, _, _, _):
             if users.count == 1, let user = users.first {
                 // We got a new user!
+                GameSessionManager.shared.startSession(forUser: user)
+
                 self.startButton.setTitle("Hello \(user.name). Let's get started!", for: .normal)
                 self.startButton.isHidden = false
                 self.nameTextField.isHidden = true
@@ -106,23 +109,15 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if let text = textField.text, text.count > 0 {
-            // Destroy existing user(s)
-            DB.findAll(User.self).forEach { $0.destroy() }
-
-            // Create the new user
-            User(value:["name": text]).save()
+            
+            // Start the session
+            APIClient.shared.createSession(text)
         }
         return false
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    /* MARK: - Navigation */
+    @IBAction func unwindHome(segue:UIStoryboardSegue) {
+        GameSessionManager.shared.clearSession()
     }
-    */
-
 }

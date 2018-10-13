@@ -13,29 +13,29 @@ class APIClient: Service {
     private var submitScore: Resource { return gameSession.child("submit_score") }
 
     init() {
-        super.init(baseURL: "http://192.168.56.109:3000")
+        super.init(baseURL: "http://192.168.1.135:3000")
         setupObservers()
     }
 
     /* API Client Functions */
     func getScoreBoard() {
-        scoreBoard.loadIfNeeded()?
-            .onFailure { error in print("Error fetching score board! \(error)") }
-    }
-
-    func startSession(_ name: String) {
-        startSession.request(.post, json: ["name": name])
-            .onFailure { error in print("Error starting session! \(error)") }
+        scoreBoard.loadIfNeeded()
     }
 
     func fetchGreenBugConfig(_ score: UInt) {
-        greenBugs.withParam("score", String(describing:score)).loadIfNeeded()?
-            .onFailure { error in print("Error fetching green bug config! \(error)") }
+        greenBugs.withParam("score", String(describing:score)).loadIfNeeded()
+    }
+
+    func createSession(_ name: String) {
+        startSession.request(.post, json: ["name": name])
+            .onSuccess { (response) in User(value:response.jsonDict).save() }
+            .onFailure { (error) in print("Error starting session! \(error)") }
     }
 
     func submitScore(_ name: String, score: UInt) {
         submitScore.request(.post, json: ["name": name, "score": String(describing: score)])
-            .onFailure { error in print("Error submitting score! \(error)") }
+            .onSuccess { (response) in UserHighScore(value: response.jsonDict).save() }
+            .onFailure { (error) in print("Error submitting score! \(error)") }
     }
 
     private func setupObservers() {
@@ -50,21 +50,7 @@ class APIClient: Service {
         greenBugs.addObserver(owner: self) {
             [weak self] resource, event in
             if case .newData = event {
-                let greenBugConfig = resource.jsonDict
-            }
-        }
-
-        startSession.addObserver(owner: self) {
-            [weak self] resource, event in
-            if case .newData = event {
-                let sessionConfig = resource.jsonDict
-            }
-        }
-
-        submitScore.addObserver(owner: self) {
-            [weak self] resource, event in
-            if case .newData = event {
-                let submissionResult = resource.jsonDict
+                let bugConfig = resource.jsonDict
             }
         }
     }

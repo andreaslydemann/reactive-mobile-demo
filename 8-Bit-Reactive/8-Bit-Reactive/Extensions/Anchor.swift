@@ -7,5 +7,5 @@ enum AnchorType: String {
 }
 
 class Anchor: ARAnchor {
-    var type: AnchorType = .greenBug
+    var type: AnchorType = .purpleBug
 }

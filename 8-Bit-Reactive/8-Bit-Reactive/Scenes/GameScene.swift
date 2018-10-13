@@ -4,37 +4,88 @@ import SpriteKit
 import ARKit
 
 class GameScene: SKScene {
+    static let AddBugInterval: TimeInterval = 1
+    static let BugApproachDuration = 5.0
+    static let BugScaleMax: CGFloat = 2.0
+    static let BugPauseDuration = 1.0
+    private var addBugTimer:Timer?
     
     override func didMove(to view: SKView) {
-        // Setup your scene here
+        addBugTimer = Timer.scheduledTimer(withTimeInterval: GameScene.AddBugInterval, repeats: true, block: { (timer) in
+            guard   let sceneView = self.view as? ARSKView,
+                    let currentFrame = sceneView.session.currentFrame else { return }
+            self.addBug(currentFrame, sceneView: sceneView)
+        });
+        addBugTimer?.fire()
     }
+
     
     override func update(_ currentTime: TimeInterval) {
-        shadeSprites()
+        guard   let sceneView = self.view as? ARSKView,
+                let currentFrame = sceneView.session.currentFrame else { return }
+
+        shadeSprites(currentFrame)
+        moveBugsCloser(sceneView)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let sceneView = self.view as? ARSKView else { return }
 
-        if let currentFrame = sceneView.session.currentFrame {
-            var translation = matrix_identity_float4x4
-            translation.columns.3.z = -3
-            let transform = simd_mul(currentFrame.camera.transform, translation)
-
-            let anchor = Anchor(transform: transform)
-            if Int.random(in: 0...1) == 0 {
-                anchor.type = .greenBug
-            } else {
-                anchor.type = .purpleBug
+        if let location = touches.first?.location(in: self) {
+            let hit = nodes(at: location)
+            if let bug = hit.first {
+                bug.removeAllActions()
+                bug.run(
+                    .group([
+                        .run { GameSessionManager.shared.increaseScore() },
+                        .removeFromParent()
+                    ])
+                )
             }
-            sceneView.session.add(anchor: anchor)
+        } else {
+            if let currentFrame = sceneView.session.currentFrame {
+                var translation = matrix_identity_float4x4
+                translation.columns.3.z = -3
+                let transform = simd_mul(currentFrame.camera.transform, translation)
+
+                let anchor = Anchor(transform: transform)
+                sceneView.session.add(anchor: anchor)
+            }
         }
     }
 
-    func shadeSprites() {
-        guard   let sceneView = self.view as? ARSKView,
-                let currentFrame = sceneView.session.currentFrame,
-                let lightEstimate = currentFrame.lightEstimate else { return }
+    private func addBug(_ currentFrame: ARFrame, sceneView: ARSKView) {
+        var translation = matrix_identity_float4x4
+
+        /* Random X range of -5, 5; Random range of Y -0.5, 0.5, and Z of -3.0 */
+        translation.columns.3.x = Float.random(in: -5...5)
+        translation.columns.3.y = Float(drand48() - 0.5)
+        translation.columns.3.z = -3
+
+        let transform = simd_mul(currentFrame.camera.transform, translation)
+
+        let anchor = Anchor(transform: transform)
+        anchor.type = .purpleBug
+        sceneView.session.add(anchor: anchor)
+    }
+
+    private func moveBugsCloser(_ sceneView: ARSKView) {
+        for node in children {
+            if let bug = node as? SKSpriteNode, !bug.hasActions() {
+                bug.run(
+                    .sequence([
+                        .scale(to: GameScene.BugScaleMax, duration: GameScene.BugApproachDuration),
+                        .wait(forDuration: GameScene.BugPauseDuration),
+                        .run({ GameSessionManager.shared.doDamage() }),
+                        .removeFromParent()
+                    ])
+                )
+            }
+        }
+    }
+
+    private func shadeSprites(_ currentFrame: ARFrame) {
+        guard let lightEstimate = currentFrame.lightEstimate else { return }
 
         let neutralIntensity: CGFloat = 1000
         let ambientIntensity = min(lightEstimate.ambientIntensity,
