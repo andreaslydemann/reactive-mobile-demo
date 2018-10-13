@@ -5,9 +5,10 @@ import ARKit
 
 class GameScene: SKScene {
     static let AddBugInterval: TimeInterval = 1
-    static let BugApproachDuration = 5.0
+    static let BugApproachDuration = 3.0
     static let BugScaleMax: CGFloat = 2.0
-    static let BugPauseDuration = 1.0
+    static let BugPauseDuration = 0.5
+    static let BugRandXRange: Float = 5.0
     private var addBugTimer:Timer?
     
     override func didMove(to view: SKView) {
@@ -57,8 +58,8 @@ class GameScene: SKScene {
     private func addBug(_ currentFrame: ARFrame, sceneView: ARSKView) {
         var translation = matrix_identity_float4x4
 
-        /* Random X range of -5, 5; Random range of Y -0.5, 0.5, and Z of -3.0 */
-        translation.columns.3.x = Float.random(in: -5...5)
+        /* Random X range w/in params; Random range of Y -0.5, 0.5, and Z of -3.0 */
+        translation.columns.3.x = Float.random(in: -GameScene.BugRandXRange...GameScene.BugRandXRange)
         translation.columns.3.y = Float(drand48() - 0.5)
         translation.columns.3.z = -3
 
@@ -75,7 +76,7 @@ class GameScene: SKScene {
                 bug.run(
                     .sequence([
                         .scale(to: GameScene.BugScaleMax, duration: GameScene.BugApproachDuration),
-                        .wait(forDuration: GameScene.BugPauseDuration),
+                        .wait(forDuration: GameScene.BugPauseDuration), // TODO: scale is reset?
                         .run({ GameSessionManager.shared.doDamage() }),
                         .removeFromParent()
                     ])

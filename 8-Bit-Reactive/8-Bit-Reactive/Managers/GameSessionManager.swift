@@ -19,13 +19,15 @@ class GameSessionManager: NSObject {
     func doDamage(_ amount: Int = 1) {
         if let user = self.currentUser {
             DB.transaction {
-                user.health = max(user.health - amount, 0)
+                user.health = max(user.health - amount, 0) // Not working, why?
             }
         }
     }
 
     func startSession(forUser user: User) {
-        self.clearSession()
+        /* Destroy any other user that may exist */
+        DB.findAll(User.self).forEach { if $0.name != user.name { $0.destroy() } }
+
         self.currentUser = user
         DB.transaction {
             user.health = User.DefaultMaxHealth

@@ -16,6 +16,7 @@ class GameViewController: UIViewController, ARSKViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sceneView.delegate = self
+        self.gameOverView.isHidden = true /* Hidden by default... until you lose! */
 
         /* Debugging Views */
         self.sceneView.showsFPS = true
@@ -52,12 +53,9 @@ class GameViewController: UIViewController, ARSKViewDelegate {
             break
 
         case .change(let changes):
-
-
             let changeNames = changes.map { $0.name }
-            if changeNames.contains("score") {
-                self.updateScoreLabel()
-            }
+            if changeNames.contains("score") { self.updateScoreLabel() }
+            if changeNames.contains("health") { self.updateHealthLabel() }
             break
 
         case .error(let error):
@@ -76,7 +74,7 @@ class GameViewController: UIViewController, ARSKViewDelegate {
 
     private func updateHealthLabel() {
         guard let user = GameSessionManager.shared.getCurrentUser() else { return }
-        self.scoreLabel.text = "Health: \(user.health)"
+        self.healthLabel.text = "Health: \(user.health)"
 
         if user.health == 0 {
             self.gameOver()
