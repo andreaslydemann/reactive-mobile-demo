@@ -47,7 +47,7 @@ class GameSessionController < ApplicationController
       user.update(high_score: score)
     end
     
-    response = { high_score: user.high_score }
+    response = { name: name, score: user.high_score }
     render json: response
   end
 end

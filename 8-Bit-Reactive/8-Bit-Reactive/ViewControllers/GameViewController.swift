@@ -26,13 +26,11 @@ class GameViewController: UIViewController, ARSKViewDelegate {
             self.sceneView.presentScene(scene)
         }
 
-        if let user = GameSessionManager.shared.getCurrentUser() {
-            self.currentUserNotificationToken = user.observe(userUpdated)
-        }
+        self.setupObservers()
     }
 
     deinit {
-        self.currentUserNotificationToken?.invalidate()
+        self.teardownObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +47,7 @@ class GameViewController: UIViewController, ARSKViewDelegate {
     private func userUpdated(change: ObjectChange) {
         switch change {
         case .deleted:
-            print("Error: User deleted while game is in session!")
+            self.teardownObservers()
             break
 
         case .change(let changes):
@@ -57,12 +55,7 @@ class GameViewController: UIViewController, ARSKViewDelegate {
             if changeNames.contains("score") { self.updateScoreLabel() }
             if changeNames.contains("health") { self.updateHealthLabel() }
 
-            /*
-                We could choose to submit the score to the server
-                here as well to keep it constantly in sync:
-
-                GameSessionManager.shared.submitScore()
-             */
+            GameSessionManager.shared.submitScore()
             break
 
         case .error(let error):
@@ -72,7 +65,7 @@ class GameViewController: UIViewController, ARSKViewDelegate {
 
     private func updateScoreLabel() {
         guard let user = GameSessionManager.shared.getCurrentUser() else { return }
-        if user.score == user.high_score {
+        if user.score >= GameSessionManager.shared.highestScore() {
             self.scoreLabel.text = "New High Score: \(user.score)"
         } else {
             self.scoreLabel.text = "Score: \(user.score)"
@@ -114,5 +107,17 @@ class GameViewController: UIViewController, ARSKViewDelegate {
 
     @IBAction func goHome(_ sender: Any) {
         performSegue(withIdentifier: "unwindSegue", sender: self)
+    }
+
+    /* MARK: - Realm Observers */
+    func setupObservers() {
+        if let user = GameSessionManager.shared.getCurrentUser() {
+            self.currentUserNotificationToken = user.observe(userUpdated)
+        }
+    }
+
+    func teardownObservers() {
+        self.currentUserNotificationToken?.invalidate()
+        self.currentUserNotificationToken = nil
     }
 }

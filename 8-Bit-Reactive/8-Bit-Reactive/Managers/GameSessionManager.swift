@@ -5,6 +5,9 @@ class GameSessionManager: NSObject {
     static var shared = GameSessionManager()
     private var currentUser: User? = nil
 
+    /* Game Config */
+    var greenBugCount = 0
+
     func increaseScore(by increment: Int = 1) {
         if let user = self.currentUser {
             DB.transaction {
@@ -45,9 +48,18 @@ class GameSessionManager: NSObject {
         }
     }
 
+    func highestScore() -> Int {
+        let scores = DB.findAll(UserHighScore.self).sorted(byKeyPath: "score")
+        if let highest = scores.last {
+            return highest.score
+        }
+        return 0
+    }
+
     func submitScore() {
         if let user = self.currentUser {
             APIClient.shared.submitScore(user.name, score: user.score)
+            APIClient.shared.fetchGreenBugConfig(user.score)
         }
     }
 

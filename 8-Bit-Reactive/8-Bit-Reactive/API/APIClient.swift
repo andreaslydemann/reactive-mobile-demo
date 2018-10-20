@@ -22,7 +22,7 @@ class APIClient: Service {
         scoreBoard.loadIfNeeded()
     }
 
-    func fetchGreenBugConfig(_ score: UInt) {
+    func fetchGreenBugConfig(_ score: Int) {
         greenBugs.withParam("score", String(describing:score)).loadIfNeeded()
     }
 
@@ -52,10 +52,12 @@ class APIClient: Service {
             }
         }
 
-        greenBugs.addObserver(owner: self) {
-            [weak self] resource, event in
+        greenBugs.addObserver(owner: self) { resource, event in
             if case .newData = event {
                 let bugConfig = resource.jsonDict
+                if let greenBugs = bugConfig["green_bugs"] as? Int {
+                    GameSessionManager.shared.greenBugCount = greenBugs
+                }
             }
         }
     }

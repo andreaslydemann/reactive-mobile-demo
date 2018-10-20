@@ -121,7 +121,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
         let users = DB.findAll(User.self)
         self.userNotificationToken = users.observe(usersUpdated)
 
-        let userHighScores = DB.findAll(UserHighScore.self)
+        let userHighScores = DB.findAll(UserHighScore.self).sorted(byKeyPath: "score", ascending: false)
         self.userHighScores.removeAll()
         self.userHighScores.append(contentsOf: userHighScores)
         self.userHighScoresToken = userHighScores.observe(highScoresUpdated)
@@ -130,5 +130,8 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
     func teardownObservers() {
         self.userHighScoresToken?.invalidate()
         self.userNotificationToken?.invalidate()
+
+        self.userHighScoresToken = nil
+        self.userNotificationToken = nil
     }
 }
