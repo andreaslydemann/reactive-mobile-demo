@@ -18,30 +18,27 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
         self.highScoreTable.dataSource = self
         self.highScoreTable.delegate = self
         self.highScoreTable.allowsSelection = false
-
-        // Nuke all. Loading this page means we should be in a fresh state.
-        let users = DB.findAll(User.self)
-        self.userNotificationToken = users.observe(usersUpdated)
-
-        let userHighScores = DB.findAll(UserHighScore.self)
-        self.userHighScores.append(contentsOf: userHighScores)
-        self.userHighScoresToken = userHighScores.observe(highScoresUpdated)
     }
 
     deinit {
-        self.userHighScoresToken?.invalidate()
-        self.userNotificationToken?.invalidate()
+        self.teardownObservers()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.startButton.isHidden = true
         self.nameTextField.isHidden = false
+        self.setupObservers()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         APIClient.shared.getScoreBoard()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.teardownObservers()
     }
 
     private func highScoresUpdated(changes: RealmCollectionChange<Results<UserHighScore>>) {
@@ -109,9 +106,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if let text = textField.text, text.count > 0 {
-            
-            // Start the session
-            APIClient.shared.createSession(text)
+            GameSessionManager.shared.registerUser(text)
         }
         return false
     }
@@ -119,5 +114,21 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
     /* MARK: - Navigation */
     @IBAction func unwindHome(segue:UIStoryboardSegue) {
         GameSessionManager.shared.clearSession()
+    }
+
+    /* MARK: - Realm Observers */
+    func setupObservers() {
+        let users = DB.findAll(User.self)
+        self.userNotificationToken = users.observe(usersUpdated)
+
+        let userHighScores = DB.findAll(UserHighScore.self)
+        self.userHighScores.removeAll()
+        self.userHighScores.append(contentsOf: userHighScores)
+        self.userHighScoresToken = userHighScores.observe(highScoresUpdated)
+    }
+
+    func teardownObservers() {
+        self.userHighScoresToken?.invalidate()
+        self.userNotificationToken?.invalidate()
     }
 }

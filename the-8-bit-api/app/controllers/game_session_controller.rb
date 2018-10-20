@@ -1,7 +1,8 @@
 class GameSessionController < ApplicationController
   SCORE_DIFFICULTY_INCREMENTS=10
 
-  def start
+  # TODO: This should be in its own controller
+  def user
     name = params.fetch(:name).downcase.chomp
     user = User.find_or_create_by(name: name)
 

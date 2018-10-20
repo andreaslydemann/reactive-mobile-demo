@@ -2,12 +2,12 @@
 import UIKit
 
 class User: GameObject {
-    static let DefaultMaxHealth = 3
+    static let DefaultMaxHealth: Int = 3
 
-    @objc dynamic var name = ""
-    @objc dynamic var score = 0
-    @objc dynamic var health = User.DefaultMaxHealth
-    @objc dynamic var high_score = 0 // Forgive the snake casing
+    @objc dynamic var name: String = ""
+    @objc dynamic var score: Int = 0
+    @objc dynamic var health: Int = User.DefaultMaxHealth
+    @objc dynamic var high_score: Int = 0 // Forgive the snake casing
 
     func destroy() {
         DB.destroy(self)

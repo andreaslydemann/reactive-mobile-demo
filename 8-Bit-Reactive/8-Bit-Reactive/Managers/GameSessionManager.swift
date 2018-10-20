@@ -19,9 +19,20 @@ class GameSessionManager: NSObject {
     func doDamage(_ amount: Int = 1) {
         if let user = self.currentUser {
             DB.transaction {
-                user.health = max(user.health - amount, 0) // Not working, why?
+                user.health = max(user.health - amount, 0)
             }
         }
+    }
+
+    func registerUser(_ name: String) {
+        /*
+            Depending on the application needs, we could instead choose to await the callback of
+            the API call and bubble up an appropriate error. However, for this app,
+            we'll just register the user locally and attempt to synchronize the user with
+            the server in the background.
+         */
+        APIClient.shared.syncSessionUser(name)
+        User(value: ["name" : name]).save()
     }
 
     func startSession(forUser user: User) {
@@ -31,6 +42,12 @@ class GameSessionManager: NSObject {
         self.currentUser = user
         DB.transaction {
             user.health = User.DefaultMaxHealth
+        }
+    }
+
+    func submitScore() {
+        if let user = self.currentUser {
+            APIClient.shared.submitScore(user.name, score: user.score)
         }
     }
 

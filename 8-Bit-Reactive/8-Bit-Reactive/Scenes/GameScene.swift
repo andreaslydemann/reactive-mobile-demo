@@ -76,8 +76,12 @@ class GameScene: SKScene {
                 bug.run(
                     .sequence([
                         .scale(to: GameScene.BugScaleMax, duration: GameScene.BugApproachDuration),
-                        .wait(forDuration: GameScene.BugPauseDuration), // TODO: scale is reset?
-                        .run({ GameSessionManager.shared.doDamage() }),
+                        .run({ bug.setScale(GameScene.BugScaleMax) }),
+                        .wait(forDuration: GameScene.BugPauseDuration),
+                        .group([
+                            .run({ GameSessionManager.shared.doDamage() }),
+                            .playSoundFileNamed("", waitForCompletion: false)
+                        ]),
                         .removeFromParent()
                     ])
                 )

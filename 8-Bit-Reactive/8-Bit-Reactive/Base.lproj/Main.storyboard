@@ -73,7 +73,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RbR-Yl-mPD" firstAttribute="leading" secondItem="QIM-8S-XAv" secondAttribute="leading" constant="20" id="5PY-tL-P0g"/>
                             <constraint firstItem="H4P-cU-2Wr" firstAttribute="leading" secondItem="QIM-8S-XAv" secondAttribute="leading" constant="20" id="5ZO-Cz-sNM"/>

@@ -27,7 +27,7 @@
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>New item</key>
-			<string>192.168.1.135</string>
+			<string>172.20.10.3</string>
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>

@@ -56,6 +56,13 @@ class GameViewController: UIViewController, ARSKViewDelegate {
             let changeNames = changes.map { $0.name }
             if changeNames.contains("score") { self.updateScoreLabel() }
             if changeNames.contains("health") { self.updateHealthLabel() }
+
+            /*
+                We could choose to submit the score to the server
+                here as well to keep it constantly in sync:
+
+                GameSessionManager.shared.submitScore()
+             */
             break
 
         case .error(let error):
@@ -84,6 +91,7 @@ class GameViewController: UIViewController, ARSKViewDelegate {
     private func gameOver() {
         self.sceneView.session.pause()
         self.gameOverView.isHidden = false
+        GameSessionManager.shared.submitScore()
     }
     
     // MARK: - ARSKViewDelegate

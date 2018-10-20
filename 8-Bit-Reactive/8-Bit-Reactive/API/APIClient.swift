@@ -7,17 +7,17 @@ class APIClient: Service {
 
     /* API Endpoints */
     private var gameSession: Resource { return resource("/game_session") }
-    private var startSession: Resource { return gameSession.child("start") }
+    private var sessionUser: Resource { return gameSession.child("user") }
     private var greenBugs: Resource { return gameSession.child("green_bugs") }
     private var scoreBoard: Resource { return gameSession.child("score_board") }
     private var submitScore: Resource { return gameSession.child("submit_score") }
 
     init() {
-        super.init(baseURL: "http://192.168.1.135:3000")
+        super.init(baseURL: "http://172.20.10.3:3000")
         setupObservers()
     }
 
-    /* API Client Functions */
+    /* MARK: - API Client Functions */
     func getScoreBoard() {
         scoreBoard.loadIfNeeded()
     }
@@ -26,24 +26,29 @@ class APIClient: Service {
         greenBugs.withParam("score", String(describing:score)).loadIfNeeded()
     }
 
-    func createSession(_ name: String) {
-        startSession.request(.post, json: ["name": name])
-            .onSuccess { (response) in User(value:response.jsonDict).save() }
-            .onFailure { (error) in print("Error starting session! \(error)") }
+    func syncSessionUser(_ name: String) {
+        sessionUser.withParam("name", name).loadIfNeeded()
     }
 
-    func submitScore(_ name: String, score: UInt) {
+    func submitScore(_ name: String, score: Int) {
         submitScore.request(.post, json: ["name": name, "score": String(describing: score)])
             .onSuccess { (response) in UserHighScore(value: response.jsonDict).save() }
             .onFailure { (error) in print("Error submitting score! \(error)") }
     }
 
+    /* MARK: - Realm Observers */
     private func setupObservers() {
         scoreBoard.addObserver(owner: self) { resource, event in
             if case .newData = event {
                 let scoreBoard = resource.jsonArray
                 let highScores = scoreBoard.map { UserHighScore(value: ($0 as! [AnyHashable: Any])) }
                 highScores.forEach { $0.save() }
+            }
+        }
+
+        sessionUser.addObserver(owner: self) { resource, event in
+            if case .newData = event {
+                User(value:resource.jsonDict).save()
             }
         }
 
