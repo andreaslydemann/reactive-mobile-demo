@@ -1,5 +1,5 @@
 class GameSessionController < ApplicationController
-  SCORE_DIFFICULTY_INCREMENTS=10
+  SCORE_DIFFICULTY_INCREMENTS=15
 
   # TODO: This should be in its own controller
   def user

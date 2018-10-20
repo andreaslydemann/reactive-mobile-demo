@@ -8,14 +8,13 @@ class GameScene: SKScene {
     static let AddGreenBugInterval: TimeInterval = 5
     static let BugApproachDuration = 4.0
     static let BugScaleMax: CGFloat = 2.0
-    static let BugPauseDuration = 1.0
-    static let BugRandXRange: Float = 3.0
-    static let BugStartZPosition: Float = 5.0
+    static let BugRandXRange: Float = 4.0
+    static let BugStartZPosition: Float = -5.0
     private var addPurpleBugTimer:Timer?
     private var addGreenBugTimer:Timer?
     
     override func didMove(to view: SKView) {
-        addPurpleBugTimer = Timer.scheduledTimer(withTimeInterval: GameScene.AddGreenBugInterval, repeats: true, block: { (timer) in
+        addPurpleBugTimer = Timer.scheduledTimer(withTimeInterval: GameScene.AddPurpleBugInterval, repeats: true, block: { (timer) in
             guard   let sceneView = self.view as? ARSKView,
                     let currentFrame = sceneView.session.currentFrame else { return }
             self.addBug(currentFrame, sceneView: sceneView)
@@ -24,12 +23,14 @@ class GameScene: SKScene {
         // Fire once immediately
         addPurpleBugTimer?.fire()
 
-        addGreenBugTimer = Timer.scheduledTimer(withTimeInterval: GameScene.AddPurpleBugInterval, repeats: true, block: { (timer) in
+        addGreenBugTimer = Timer.scheduledTimer(withTimeInterval: GameScene.AddGreenBugInterval, repeats: true, block: { (timer) in
             guard   let sceneView = self.view as? ARSKView,
                 let currentFrame = sceneView.session.currentFrame else { return }
 
-            for _ in (0...GameSessionManager.shared.greenBugCount) {
-                self.addBug(currentFrame, sceneView: sceneView, type: .greenBug)
+            if GameSessionManager.shared.greenBugCount > 0 {
+                for _ in (0...GameSessionManager.shared.greenBugCount) {
+                    self.addBug(currentFrame, sceneView: sceneView, type: .greenBug)
+                }
             }
         });
     }
@@ -82,12 +83,8 @@ class GameScene: SKScene {
                     .sequence([
                         Sounds.Buzz,
                         .scale(to: GameScene.BugScaleMax, duration: GameScene.BugApproachDuration),
-                        .run({ bug.setScale(GameScene.BugScaleMax) }),
-                        .wait(forDuration: GameScene.BugPauseDuration),
-                        .run({
-                            self.run(Sounds.Ouch)
-                            GameSessionManager.shared.doDamage()
-                        }),
+                        Sounds.Ouch,
+                        .run({ GameSessionManager.shared.doDamage() }),
                         .removeFromParent()
                     ])
                 )

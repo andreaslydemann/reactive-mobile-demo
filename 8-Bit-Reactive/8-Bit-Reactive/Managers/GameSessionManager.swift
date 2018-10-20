@@ -46,6 +46,9 @@ class GameSessionManager: NSObject {
         DB.transaction {
             user.health = User.DefaultMaxHealth
         }
+
+        /* Reset game config */
+        self.greenBugCount = 0
     }
 
     func highestScore() -> Int {
@@ -58,8 +61,26 @@ class GameSessionManager: NSObject {
 
     func submitScore() {
         if let user = self.currentUser {
+            // Ensure user score is saved locally if necessary
+            self.updateLocalUserHighScore()
+
+            // Submit score to server and fetch green bug config (which varies based on score)
             APIClient.shared.submitScore(user.name, score: user.score)
             APIClient.shared.fetchGreenBugConfig(user.score)
+        }
+    }
+
+    func updateLocalUserHighScore() {
+        if let user = self.currentUser {
+            let pred = NSPredicate(format: "name = %@", user.name)
+
+            if let userHighScore = DB.findAll(UserHighScore.self).filter(pred).first {
+                if user.score >= userHighScore.score {
+                    DB.transaction { userHighScore.score = user.score }
+                }
+            } else {
+                UserHighScore(value: ["name" : user.name, "score" : user.score ]).save()
+            }
         }
     }
 

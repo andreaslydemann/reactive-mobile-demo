@@ -83,6 +83,14 @@ class GameViewController: UIViewController, ARSKViewDelegate {
 
     private func gameOver() {
         self.sceneView.session.pause()
+        if let scene = self.sceneView.scene {
+            for child in scene.children {
+                if let bug = child as? SKSpriteNode {
+                    bug.removeAllActions()
+                    bug.isPaused = true
+                }
+            }
+        }
         self.gameOverView.isHidden = false
         GameSessionManager.shared.submitScore()
     }

@@ -23,7 +23,13 @@ class APIClient: Service {
     }
 
     func fetchGreenBugConfig(_ score: Int) {
-        greenBugs.withParam("score", String(describing:score)).loadIfNeeded()
+        greenBugs.withParam("score", String(describing:score)).request(.get)
+            .onSuccess { (response) in
+                if let greenBugs = response.jsonDict["green_bugs"] as? Int {
+                    GameSessionManager.shared.greenBugCount = greenBugs
+                }
+            }
+            .onFailure { (error) in print("Error submitting score! \(error)") }
     }
 
     func syncSessionUser(_ name: String) {
@@ -36,7 +42,7 @@ class APIClient: Service {
             .onFailure { (error) in print("Error submitting score! \(error)") }
     }
 
-    /* MARK: - Realm Observers */
+    /* MARK: - Siesta Observers */
     private func setupObservers() {
         scoreBoard.addObserver(owner: self) { resource, event in
             if case .newData = event {
@@ -49,15 +55,6 @@ class APIClient: Service {
         sessionUser.addObserver(owner: self) { resource, event in
             if case .newData = event {
                 User(value:resource.jsonDict).save()
-            }
-        }
-
-        greenBugs.addObserver(owner: self) { resource, event in
-            if case .newData = event {
-                let bugConfig = resource.jsonDict
-                if let greenBugs = bugConfig["green_bugs"] as? Int {
-                    GameSessionManager.shared.greenBugCount = greenBugs
-                }
             }
         }
     }
