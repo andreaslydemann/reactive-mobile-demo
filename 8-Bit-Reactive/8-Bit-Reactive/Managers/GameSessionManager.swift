@@ -8,6 +8,11 @@ class GameSessionManager: NSObject {
     /* Game Config */
     var greenBugCount = 0
 
+    func initialize() {
+        /* Destroy all users */
+        DB.findAll(User.self).forEach( { $0.destroy() } )
+    }
+
     func increaseScore(by increment: Int = 1) {
         if let user = self.currentUser {
             DB.transaction {

@@ -172,7 +172,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="go" textContentType="name"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" textContentType="name"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invader Smoosher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yry-ZO-inG">
                                         <rect key="frame" x="47" y="20" width="206.5" height="33"/>
