@@ -28,6 +28,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
         super.viewWillAppear(animated)
         self.startButton.isHidden = true
         self.nameTextField.isHidden = false
+        self.nameTextField.text = ""
         self.setupObservers()
     }
 
@@ -66,17 +67,16 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
         }
     }
 
-    private func usersUpdated(changes: RealmCollectionChange<Results<User>>) {
+    private func currentUserChange(changes: RealmCollectionChange<Results<User>>) {
         switch changes {
         case .initial:
             break
 
-        /* TODO: Is this good design */
         case .update(let users, _, _, _):
-            if users.count == 1, let user = users.first {
-                // We got a new user!
-                GameSessionManager.shared.startSession(forUser: user)
+            if let user = users.first {
 
+                // We got a new user!
+                GameSessionManager.shared.initializeSession()
                 self.startButton.setTitle("Hello \(user.name). Let's get started!", for: .normal)
                 self.startButton.isHidden = false
                 self.nameTextField.isHidden = true
@@ -118,8 +118,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UITableViewD
 
     /* MARK: - Realm Observers */
     func setupObservers() {
-        let users = DB.findAll(User.self)
-        self.userNotificationToken = users.observe(usersUpdated)
+        self.userNotificationToken = User.current().observe(currentUserChange)
 
         let userHighScores = DB.findAll(UserHighScore.self).sorted(byKeyPath: "score", ascending: false)
         self.userHighScores.removeAll()

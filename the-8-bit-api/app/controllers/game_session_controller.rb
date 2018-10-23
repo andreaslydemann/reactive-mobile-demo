@@ -6,7 +6,14 @@ class GameSessionController < ApplicationController
     name = params.fetch(:name).downcase.chomp
     user = User.find_or_create_by(name: name)
 
-    response = { name: user.name, high_score: user.high_score}
+    response = {  
+      name: user.name,
+      high_score: { 
+        name: user.name, 
+        score: user.high_score 
+      }
+    }
+
     render json: response 
   end
 

@@ -20,9 +20,6 @@ class GameScene: SKScene {
             self.addBug(currentFrame, sceneView: sceneView)
         });
 
-        // Fire once immediately
-        addPurpleBugTimer?.fire()
-
         addGreenBugTimer = Timer.scheduledTimer(withTimeInterval: GameScene.AddGreenBugInterval, repeats: true, block: { (timer) in
             guard   let sceneView = self.view as? ARSKView,
                 let currentFrame = sceneView.session.currentFrame else { return }

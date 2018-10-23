@@ -14,12 +14,30 @@ class APIClient: Service {
 
     init() {
         super.init(baseURL: "http://172.20.10.3:3000")
-        setupObservers()
     }
 
     /* MARK: - API Client Functions */
+
+    func syncSessionUser(_ name: String) {
+        sessionUser.withParam("name", name).request(.get)
+            .onSuccess { (response) in User(value:response.jsonDict).save() }
+            .onFailure{ (error) in print("Error syncing user session: \(error)") }
+    }
+
+    func submitScore(_ name: String, score: Int) {
+        submitScore.request(.post, json: ["name": name, "score": String(describing: score)])
+            .onSuccess { (response) in UserHighScore(value: response.jsonDict).save() }
+            .onFailure { (error) in print("Error submitting score! \(error)") }
+    }
+
     func getScoreBoard() {
-        scoreBoard.loadIfNeeded()
+        scoreBoard.request(.get)
+            .onSuccess { (response) in
+                let scoreBoard = response.jsonArray
+                let highScores = scoreBoard.map { UserHighScore(value: ($0 as! [AnyHashable: Any])) }
+                highScores.forEach { $0.save() }
+            }
+            .onFailure { (error) in print("Error fetcing scoreboard: \(error)") }
     }
 
     func fetchGreenBugConfig(_ score: Int) {
@@ -30,32 +48,5 @@ class APIClient: Service {
                 }
             }
             .onFailure { (error) in print("Error submitting score! \(error)") }
-    }
-
-    func syncSessionUser(_ name: String) {
-        sessionUser.withParam("name", name).loadIfNeeded()
-    }
-
-    func submitScore(_ name: String, score: Int) {
-        submitScore.request(.post, json: ["name": name, "score": String(describing: score)])
-            .onSuccess { (response) in UserHighScore(value: response.jsonDict).save() }
-            .onFailure { (error) in print("Error submitting score! \(error)") }
-    }
-
-    /* MARK: - Siesta Observers */
-    private func setupObservers() {
-        scoreBoard.addObserver(owner: self) { resource, event in
-            if case .newData = event {
-                let scoreBoard = resource.jsonArray
-                let highScores = scoreBoard.map { UserHighScore(value: ($0 as! [AnyHashable: Any])) }
-                highScores.forEach { $0.save() }
-            }
-        }
-
-        sessionUser.addObserver(owner: self) { resource, event in
-            if case .newData = event {
-                User(value:resource.jsonDict).save()
-            }
-        }
     }
 }

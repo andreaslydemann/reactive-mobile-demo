@@ -1,9 +1,10 @@
 
-import UIKit
+import RealmSwift
 
 class GameSessionManager: NSObject {
     static var shared = GameSessionManager()
     private var currentUser: User? = nil
+    private var currentUserNotificationToken: NotificationToken? = nil
 
     /* Game Config */
     var greenBugCount = 0
@@ -11,14 +12,16 @@ class GameSessionManager: NSObject {
     func initialize() {
         /* Destroy all users */
         DB.findAll(User.self).forEach( { $0.destroy() } )
+
+        self.currentUserNotificationToken = User.current().observe(currentUserUpdated)
     }
 
     func increaseScore(by increment: Int = 1) {
         if let user = self.currentUser {
             DB.transaction {
                 user.score += increment
-                if user.score > user.high_score {
-                    user.high_score = user.score
+                if let highScore = user.high_score, user.score > highScore.score {
+                    highScore.score = user.score
                 }
             }
         }
@@ -40,18 +43,10 @@ class GameSessionManager: NSObject {
             the server in the background.
          */
         APIClient.shared.syncSessionUser(name)
-        User(value: ["name" : name]).save()
+        User(value: ["name" : name, "health": User.DefaultMaxHealth]).save()
     }
 
-    func startSession(forUser user: User) {
-        /* Destroy any other user that may exist */
-        DB.findAll(User.self).forEach { if $0.name != user.name { $0.destroy() } }
-
-        self.currentUser = user
-        DB.transaction {
-            user.health = User.DefaultMaxHealth
-        }
-
+    func initializeSession() {
         /* Reset game config */
         self.greenBugCount = 0
     }
@@ -96,5 +91,21 @@ class GameSessionManager: NSObject {
     func clearSession() {
         DB.findAll(User.self).forEach { $0.destroy() }  // Destroy existing user(s)
         self.currentUser = nil
+    }
+
+    private func currentUserUpdated(_ change: RealmCollectionChange<Results<User>>) {
+        switch change {
+        case .error(let err):
+            print("Error encountered while waiting for current user: \(err)")
+            break
+
+        case .initial(let users):
+            self.currentUser = users.first
+            break
+
+        case .update(let users, _, _, _):
+            self.currentUser = users.first
+            break
+        }
     }
 }
