@@ -13,7 +13,7 @@ class APIClient: Service {
     private var submitScore: Resource { return gameSession.child("submit_score") }
 
     init() {
-        super.init(baseURL: "http://172.20.10.3:3000")
+        super.init(baseURL: "http://10.105.113.11:3000")
     }
 
     /* MARK: - API Client Functions */
@@ -33,9 +33,9 @@ class APIClient: Service {
     func getScoreBoard() {
         scoreBoard.request(.get)
             .onSuccess { (response) in
-                let scoreBoard = response.jsonArray
-                let highScores = scoreBoard.map { UserHighScore(value: ($0 as! [AnyHashable: Any])) }
-                highScores.forEach { $0.save() }
+                response.jsonArray.forEach {
+                    UserHighScore(value: ($0 as! [AnyHashable: Any])).save()
+                }
             }
             .onFailure { (error) in print("Error fetcing scoreboard: \(error)") }
     }

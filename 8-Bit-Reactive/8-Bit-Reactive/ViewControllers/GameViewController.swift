@@ -18,10 +18,6 @@ class GameViewController: UIViewController, ARSKViewDelegate {
         self.sceneView.delegate = self
         self.gameOverView.isHidden = true /* Hidden by default... until you lose! */
 
-        /* Debugging Views */
-        self.sceneView.showsFPS = true
-        self.sceneView.showsNodeCount = true
-
         if let scene = SKScene(fileNamed: "GameScene") {
             self.sceneView.presentScene(scene)
         }
