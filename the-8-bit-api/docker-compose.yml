@@ -6,10 +6,10 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
   the-8-bit-api:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec rails s -p 80 -b '0.0.0.0'
     volumes:
       - .:/the-8-bit-api
     ports:
-      - "3000:3000"
+      - "80:80"
     depends_on:
       - db

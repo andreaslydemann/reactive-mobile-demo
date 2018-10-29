@@ -13,7 +13,7 @@ class APIClient: Service {
     private var submitScore: Resource { return gameSession.child("submit_score") }
 
     init() {
-        super.init(baseURL: "http://10.105.113.11:3000")
+        super.init(baseURL: "http://23.96.36.192")
     }
 
     /* MARK: - API Client Functions */
