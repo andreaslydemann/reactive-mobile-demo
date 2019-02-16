@@ -1,24 +1,27 @@
-# README
+# Server
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the backend for the demo reactive_mobile app. It contains a basic login system
+and a system for creating and retrieving 'thoughts' which are just small blobs of text.
 
-Things you may want to cover:
+It uses JWT auth and is backed by Postgres with Rspec tests.
 
-* Ruby version
+# Building with Docker
 
-* System dependencies
+There are some build scripts for getting it running with docker. 
+```shell
+./scripts/build.sh # to build
+./scripts/run.sh # to run the image
+```
 
-* Configuration
+This will build the image (after creating db, running migrations etc) and run it in the foreground.
 
-* Database creation
+You can pass `-d` to the `run.sh` script to run it in the background.
 
-* Database initialization
+# Tests
 
-* How to run the test suite
+Run the tests via
+```shell
+bundle exec rspec
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+from within the running container (to get inside the container, you can run `docker exec -ti api bash`).

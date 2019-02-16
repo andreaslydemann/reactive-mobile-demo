@@ -1,0 +1,8 @@
+use_frameworks!
+
+target 'reactive-mobile-demo' do
+  pod 'Siesta', '~> 1.0'
+  pod 'RealmSwift'
+  pod 'ReSwift'
+  pod 'ReSwiftThunk'
+end

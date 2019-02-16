@@ -11,8 +11,9 @@ class UsersController < ApplicationController
     return render json: {}, status: 401 if existing.present?
     
     salt = SecureRandom.uuid
-    User.create!(username: username, salt: salt, password: salt + password)
-    render json: {}, status: 201
+    user = User.create!(username: username, salt: salt, password: salt + password)
+    token = AuthenticateUser.call(username, password, user.salt)
+    render json: { auth_token: token }, status: 201
   end
   
   def authenticate
