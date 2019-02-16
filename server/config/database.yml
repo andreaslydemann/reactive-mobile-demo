@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password:
+  pool: 5
+
+development:
+  <<: *default
+  database: reactive_mobile_development
+
+test:
+  <<: *default
+  database: reactive_mobile_test
