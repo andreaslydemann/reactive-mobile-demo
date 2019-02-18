@@ -3234,3 +3234,646 @@ Processing by UsersController#authenticate as JSON
   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
 Completed 401 Unauthorized in 5ms (Views: 0.3ms | ActiveRecord: 1.0ms)
   [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (23.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$OzLkEFQHUbUe6iC5sZczreEsXv3mVC5y9EN2WFzLY6bUFIBmjTV1e"], ["salt", "2e2922e9-0913-47aa-b87d-1dc121488f86"], ["created_at", "2019-02-17 18:35:52.039569"], ["updated_at", "2019-02-17 18:35:52.039569"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Processing by ThoughtsController#index as HTML
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 8ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$NR0jbWq7Qhr/s4FYjw5wzO0.ISLAQvXns04q5q574bTE2zdQMg0ti"], ["salt", "85332999-6620-4fd4-afe6-1d7f2a8c213b"], ["created_at", "2019-02-17 18:35:52.128702"], ["updated_at", "2019-02-17 18:35:52.128702"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (11.0ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 9f609ce7-c955-444b-84ec-a6064aed6b66"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.197033"], ["updated_at", "2019-02-17 18:35:52.197033"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 4e76e248-ac45-4c4e-97fc-41be5dab315f"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.211229"], ["updated_at", "2019-02-17 18:35:52.211229"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.9ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 106601dc-62ef-4fb1-98e7-eca21278207e"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.214116"], ["updated_at", "2019-02-17 18:35:52.214116"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (1.5ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 6328b186-4246-4f5a-ab87-5a54937ead09"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.217598"], ["updated_at", "2019-02-17 18:35:52.217598"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 6b8ee352-0e50-4553-81b6-f99898821d98"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.221193"], ["updated_at", "2019-02-17 18:35:52.221193"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 54286a58-ad8a-4bc7-a96e-9d247d51b9d0"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.223483"], ["updated_at", "2019-02-17 18:35:52.223483"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 4658dcc3-9fa0-4ab4-8368-32b301b90a1f"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.225738"], ["updated_at", "2019-02-17 18:35:52.225738"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 15d9bef8-98ea-441a-9365-248a47a31294"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.227901"], ["updated_at", "2019-02-17 18:35:52.227901"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 800c718f-afd1-40f5-beaf-46ac9d28b8cd"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.230078"], ["updated_at", "2019-02-17 18:35:52.230078"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.9ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 0aab9553-dcbd-4868-9742-1c8a0fcee4ca"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.232315"], ["updated_at", "2019-02-17 18:35:52.232315"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought bb7e17e0-1e52-4262-b144-9380b172d673"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.235336"], ["updated_at", "2019-02-17 18:35:52.235336"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought dd389292-7ca7-4f2f-a3eb-a57e70ede3fb"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.237559"], ["updated_at", "2019-02-17 18:35:52.237559"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought a9cb4364-6ff9-4a9e-8423-06b161822c0e"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.245467"], ["updated_at", "2019-02-17 18:35:52.245467"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 83a81244-0948-4fed-ba8a-a6c824486bb0"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.248482"], ["updated_at", "2019-02-17 18:35:52.248482"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 7f46ed2e-5b6c-4eac-905f-089dce2452f7"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.251352"], ["updated_at", "2019-02-17 18:35:52.251352"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 70b602d8-58c4-44fd-828c-7df7c292e438"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.254073"], ["updated_at", "2019-02-17 18:35:52.254073"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought d7cc60f0-af1a-41ed-b3e0-22d1d858ef2f"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.256670"], ["updated_at", "2019-02-17 18:35:52.256670"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 3d9d1169-a695-43dd-9677-adc570cbdc1b"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.259056"], ["updated_at", "2019-02-17 18:35:52.259056"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought e1323ca5-2a5b-4da6-ab1e-155b59c5882f"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.261440"], ["updated_at", "2019-02-17 18:35:52.261440"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 25d2486c-ad17-4453-899e-010dfc1248af"], ["user_id", 103], ["created_at", "2019-02-17 18:35:52.263895"], ["updated_at", "2019-02-17 18:35:52.263895"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ThoughtsController#index as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mThought Load (1.2ms)[0m  [1m[34mSELECT  "thoughts".* FROM "thoughts" ORDER BY "thoughts"."updated_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+Completed 200 OK in 38ms (Views: 0.4ms | ActiveRecord: 9.3ms)
+  [1m[36mThought Load (1.2ms)[0m  [1m[34mSELECT  "thoughts".* FROM "thoughts" ORDER BY "thoughts"."updated_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (3.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$xzhOrY.za9cfDI8RHArRJuR30X02fuf0kIMhNOK/nsgXG6YrnmqbO"], ["salt", "322d00b4-172d-4ea5-87fb-16045f723c89"], ["created_at", "2019-02-17 18:35:52.321488"], ["updated_at", "2019-02-17 18:35:52.321488"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 05534884-7eb0-41a7-b0a1-6e926f651dd9"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.333555"], ["updated_at", "2019-02-17 18:35:52.333555"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 32a38bf5-4614-491c-9f55-781430782914"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.336210"], ["updated_at", "2019-02-17 18:35:52.336210"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 8004251e-f41f-4edc-9605-e36b290fa9cd"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.339099"], ["updated_at", "2019-02-17 18:35:52.339099"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought dbe3e676-9f87-466d-82b2-360df31befe6"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.341938"], ["updated_at", "2019-02-17 18:35:52.341938"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought d1d87c2c-0438-4a3e-9e9b-690344e9202c"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.345148"], ["updated_at", "2019-02-17 18:35:52.345148"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.5ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 3be173c5-3f21-43ca-9341-4af0af054893"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.347955"], ["updated_at", "2019-02-17 18:35:52.347955"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 8ba01a98-d2d7-4ded-8f40-b0f9188160a3"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.351207"], ["updated_at", "2019-02-17 18:35:52.351207"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 134acee3-7ae0-421b-8f2c-658506d29217"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.354690"], ["updated_at", "2019-02-17 18:35:52.354690"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.5ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 3c1d8234-6af4-4563-a6d9-6e747e296321"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.357677"], ["updated_at", "2019-02-17 18:35:52.357677"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 74c790bd-44e5-48b8-9a95-d29ac9a2db02"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.360657"], ["updated_at", "2019-02-17 18:35:52.360657"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought c7f12bd6-cd2b-434c-bd49-0688ba231f32"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.363375"], ["updated_at", "2019-02-17 18:35:52.363375"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought d79c76be-4127-4844-ad94-1cc60fe2937e"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.366197"], ["updated_at", "2019-02-17 18:35:52.366197"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 22bfe0c9-aac9-4118-bc75-d6802040715b"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.368786"], ["updated_at", "2019-02-17 18:35:52.368786"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought af219e4a-b0db-4239-8abe-0b81c2fb3e0b"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.371468"], ["updated_at", "2019-02-17 18:35:52.371468"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought fca47104-bf53-418d-8679-f97f0c2d9282"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.374490"], ["updated_at", "2019-02-17 18:35:52.374490"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 5d6fdf0f-5e3d-4058-a2b4-a6646e3c09cf"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.377473"], ["updated_at", "2019-02-17 18:35:52.377473"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought e45ec4a1-5dce-42c8-b039-de6bf61a92a2"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.380324"], ["updated_at", "2019-02-17 18:35:52.380324"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.9ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 432fedcf-f1dc-4431-b213-5f80314de4ec"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.383241"], ["updated_at", "2019-02-17 18:35:52.383241"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought bdc89fc2-5dd4-449c-996e-53d46549c7b9"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.386547"], ["updated_at", "2019-02-17 18:35:52.386547"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 92752ace-ead2-46bf-a039-aeebf89bb4ba"], ["user_id", 104], ["created_at", "2019-02-17 18:35:52.389143"], ["updated_at", "2019-02-17 18:35:52.389143"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ThoughtsController#index as JSON
+  Parameters: {"limit"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 104], ["LIMIT", 1]]
+  [1m[36mThought Load (1.8ms)[0m  [1m[34mSELECT  "thoughts".* FROM "thoughts" ORDER BY "thoughts"."updated_at" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 104], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 104], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 104], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 104], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 104], ["LIMIT", 1]]
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 3.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$o3UuPKSqR..YeYy6URgJT.c8ub6KJ8OOzB/CF.sWQB7SdVmEaSMnq"], ["salt", "04152162-1191-4f6e-9953-2eaf1648f206"], ["created_at", "2019-02-17 18:35:52.407004"], ["updated_at", "2019-02-17 18:35:52.407004"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 048e3561-43e4-4f1e-8167-51a0f6ade92e"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.414912"], ["updated_at", "2019-02-17 18:35:52.414912"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 88548c69-627f-4c37-86b1-57b013d4eb2b"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.418225"], ["updated_at", "2019-02-17 18:35:52.418225"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.5ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 10895dd5-e2c5-4e35-94e2-9f5c08ec04c8"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.421687"], ["updated_at", "2019-02-17 18:35:52.421687"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 45db3023-cf9a-4951-a934-bee56bdef219"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.425271"], ["updated_at", "2019-02-17 18:35:52.425271"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought faeec0e4-564e-4864-85b0-691050767122"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.429235"], ["updated_at", "2019-02-17 18:35:52.429235"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 5045be9b-4da5-4ef8-ab97-6f0306f3eeff"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.432277"], ["updated_at", "2019-02-17 18:35:52.432277"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought ded0f8a5-9f80-4816-acd7-c534bfe1446f"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.435572"], ["updated_at", "2019-02-17 18:35:52.435572"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 95400354-2c57-45d1-af98-cc96e3224ea8"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.438785"], ["updated_at", "2019-02-17 18:35:52.438785"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought febef14c-f1c8-480c-8bc4-6f7b68ae1610"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.441845"], ["updated_at", "2019-02-17 18:35:52.441845"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought b99395db-d4a4-4109-9d58-5edce8b272b2"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.444838"], ["updated_at", "2019-02-17 18:35:52.444838"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 0dfbe5d6-279e-4b93-999d-a7a9ffb2ffb7"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.447555"], ["updated_at", "2019-02-17 18:35:52.447555"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought f71f5329-9775-4e17-b037-b7fcf43bbf4f"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.450248"], ["updated_at", "2019-02-17 18:35:52.450248"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 90f8dfb5-e13b-4a84-af39-4bdd84906afe"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.453151"], ["updated_at", "2019-02-17 18:35:52.453151"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought e5a2b4a4-d4b7-45bd-8378-bf5ef58efee1"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.455881"], ["updated_at", "2019-02-17 18:35:52.455881"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 5f084528-621a-494e-bc45-59fdeb33424e"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.458444"], ["updated_at", "2019-02-17 18:35:52.458444"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 0b10a255-0752-4b43-8f45-f72e2ff11b4d"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.460997"], ["updated_at", "2019-02-17 18:35:52.460997"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 6a5a862e-0e66-4801-b1e9-efdfe0b75bb0"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.463545"], ["updated_at", "2019-02-17 18:35:52.463545"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 03a4cb84-645a-40e0-82fd-6198b86bc050"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.465958"], ["updated_at", "2019-02-17 18:35:52.465958"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought c811e129-a4b9-467a-81e6-9c6084cbf372"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.468429"], ["updated_at", "2019-02-17 18:35:52.468429"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 37fad1cc-7b9d-434f-954b-64f297533be5"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.471020"], ["updated_at", "2019-02-17 18:35:52.471020"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Scrambled eggs and cheddar cheese for breakfast"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.473662"], ["updated_at", "2019-02-17 18:35:52.473662"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Gruyere cheese for lunch"], ["user_id", 105], ["created_at", "2019-02-17 18:35:52.476219"], ["updated_at", "2019-02-17 18:35:52.476219"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ThoughtsController#index as JSON
+  Parameters: {"filter"=>"cheese"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 105], ["LIMIT", 1]]
+  [1m[36mThought Load (39.6ms)[0m  [1m[34mSELECT  "thoughts".* FROM "thoughts" INNER JOIN (SELECT "thoughts"."id" AS pg_search_id, (ts_rank((to_tsvector('simple', coalesce("thoughts"."text"::text, ''))), (to_tsquery('simple', ''' ' || 'cheese' || ' ''')), 0)) AS rank FROM "thoughts" WHERE (((to_tsvector('simple', coalesce("thoughts"."text"::text, ''))) @@ (to_tsquery('simple', ''' ' || 'cheese' || ' '''))))) AS pg_search_c639cb5f2da1e0eaec96ab ON "thoughts"."id" = pg_search_c639cb5f2da1e0eaec96ab.pg_search_id ORDER BY pg_search_c639cb5f2da1e0eaec96ab.rank DESC, "thoughts"."id" ASC, "thoughts"."updated_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 105], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 105], ["LIMIT", 1]]
+Completed 200 OK in 75ms (Views: 0.2ms | ActiveRecord: 42.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$XgfTrng/KP9rtmnsZ/7KAuePBsvJFBUVmxW8qDiFLSsOA3WO2aSua"], ["salt", "89f78038-3243-4e9a-b56f-8c4e440b5063"], ["created_at", "2019-02-17 18:35:52.559058"], ["updated_at", "2019-02-17 18:35:52.559058"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Processing by ThoughtsController#create as JSON
+  Parameters: {"text"=>"This is a new thought"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 106], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "This is a new thought"], ["user_id", 106], ["created_at", "2019-02-17 18:35:52.585088"], ["updated_at", "2019-02-17 18:35:52.585088"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Processing by UsersController#create as JSON
+  Parameters: {"password"=>"[FILTERED]", "username"=>"jeff"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$EoqrHT25j5gshZlUsWmnpeFkjRFgP2MoCen18zpMjC1T0/0/XRJl6"], ["salt", "b61311d6-877d-4d04-b781-6747c4bbaf8f"], ["created_at", "2019-02-17 18:35:52.603079"], ["updated_at", "2019-02-17 18:35:52.603079"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Completed 201 Created in 11ms (Views: 0.2ms | ActiveRecord: 2.2ms)
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$UMmXLm1hKu/50vNoert5leGnPe15OKyHwYuYvbH1iJ9qcdoK6cTNO"], ["salt", "e2578a39-f0b7-4e14-807b-c1c8006e5eec"], ["created_at", "2019-02-17 18:35:52.627251"], ["updated_at", "2019-02-17 18:35:52.627251"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#create as JSON
+  Parameters: {"password"=>"[FILTERED]", "username"=>"jeff"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$FVOBxBh7VILSbOaM9RL6b.c1ulyC6kRgDuSha6r2y56xSOGkXNPZ2"], ["salt", "4820f311-d4d2-4ef2-a29a-8566694c9611"], ["created_at", "2019-02-17 18:35:52.638148"], ["updated_at", "2019-02-17 18:35:52.638148"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#authenticate as JSON
+  Parameters: {"password"=>"[FILTERED]", "username"=>"jeff"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$3UNqqynzopmyWpYMwgPvxem63D60k1Z0WGU/2fuDeD25jmOmy43OK"], ["salt", "3aac0c6a-c01d-4106-a987-dd76ca7f067e"], ["created_at", "2019-02-17 18:35:52.652400"], ["updated_at", "2019-02-17 18:35:52.652400"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#authenticate as JSON
+  Parameters: {"password"=>"[FILTERED]", "username"=>"jeff"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (4.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$86CqD.pLmM.Yh8m1DckeleCgki9L3qQwQC44CnJz74aAUUiNu8Um."], ["salt", "d05ecb94-cbe0-4303-8b3e-360f8758989b"], ["created_at", "2019-02-17 18:36:09.210977"], ["updated_at", "2019-02-17 18:36:09.210977"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Processing by ThoughtsController#index as HTML
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 8ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$ue9XzMKoT1eXZc8ZAqPFAO8z6MYQ7.nuYoOvIAJ/ZaOajwlQKz03a"], ["salt", "ea01026f-7680-45a8-875f-6f7047ee67b9"], ["created_at", "2019-02-17 18:36:09.277829"], ["updated_at", "2019-02-17 18:36:09.277829"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (3.0ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 00e97d9c-54cb-4aaf-a952-7d13538ba45c"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.326454"], ["updated_at", "2019-02-17 18:36:09.326454"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought ee992a66-e1a8-48fa-9363-c656d0c39ad2"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.331790"], ["updated_at", "2019-02-17 18:36:09.331790"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 71a05a3e-b230-4fe1-815e-127911799618"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.334228"], ["updated_at", "2019-02-17 18:36:09.334228"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought c6568f9f-aa00-46f3-9983-9012218ef6d3"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.336783"], ["updated_at", "2019-02-17 18:36:09.336783"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought fbc2cd3c-af98-4b02-ac9f-41d3f050ee67"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.340052"], ["updated_at", "2019-02-17 18:36:09.340052"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 570dee74-b4bd-434f-83e8-b29e2cd4f498"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.343211"], ["updated_at", "2019-02-17 18:36:09.343211"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 80704241-2243-4740-914e-715d76aa16f7"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.346459"], ["updated_at", "2019-02-17 18:36:09.346459"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (4.1ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 3ca78d6b-b1b7-4747-a7f8-3fc1e48e90f7"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.349678"], ["updated_at", "2019-02-17 18:36:09.349678"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought ffd2d4bd-ffc5-4bae-ac67-a236493eadb8"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.356278"], ["updated_at", "2019-02-17 18:36:09.356278"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought ded6037d-d3b0-477b-b3c6-0b754a06884d"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.359023"], ["updated_at", "2019-02-17 18:36:09.359023"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 40894278-63c1-4c82-ac5a-13c1fd196df8"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.362049"], ["updated_at", "2019-02-17 18:36:09.362049"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 7ebc8ef5-2535-4ebc-8757-b6e408b37f68"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.364670"], ["updated_at", "2019-02-17 18:36:09.364670"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought a7765600-c31b-42e4-b65b-3e398ba3c63b"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.367325"], ["updated_at", "2019-02-17 18:36:09.367325"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 0b6b2279-f529-426c-9b14-e63984cd6e7b"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.369751"], ["updated_at", "2019-02-17 18:36:09.369751"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 3d44ee98-bb17-4507-b23a-9a5d31bad1cf"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.372754"], ["updated_at", "2019-02-17 18:36:09.372754"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought c8c531e1-2a5f-43f4-977e-5a637c7f7efe"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.375341"], ["updated_at", "2019-02-17 18:36:09.375341"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought f0926a22-27fb-4bcb-ad73-03eda836deda"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.377846"], ["updated_at", "2019-02-17 18:36:09.377846"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 87ee041d-ea37-4656-9c57-df7baa5590b6"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.380292"], ["updated_at", "2019-02-17 18:36:09.380292"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought ab49b9d8-1dd7-44f6-8c2e-9966be9bec08"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.382673"], ["updated_at", "2019-02-17 18:36:09.382673"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 941cc0c5-be84-4770-9e80-3b1ee18c1c24"], ["user_id", 112], ["created_at", "2019-02-17 18:36:09.385173"], ["updated_at", "2019-02-17 18:36:09.385173"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ThoughtsController#index as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mThought Load (4.0ms)[0m  [1m[34mSELECT  "thoughts".* FROM "thoughts" ORDER BY "thoughts"."updated_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+Completed 200 OK in 33ms (Views: 0.3ms | ActiveRecord: 11.9ms)
+  [1m[36mThought Load (1.3ms)[0m  [1m[34mSELECT  "thoughts".* FROM "thoughts" ORDER BY "thoughts"."updated_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$40Vg6lzj5GdAi4f1TK2RzOf2m5ilrrdWy1Xi3jvLI1bhWty3s4bPO"], ["salt", "e7ca09d5-f772-4a3c-a20e-3bf80f293106"], ["created_at", "2019-02-17 18:36:09.440408"], ["updated_at", "2019-02-17 18:36:09.440408"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.6ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 204a75b1-84a7-4a59-9a23-99ccaf455eec"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.453203"], ["updated_at", "2019-02-17 18:36:09.453203"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (1.1ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 5808b101-575d-48d8-8160-07cc58da7f07"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.457691"], ["updated_at", "2019-02-17 18:36:09.457691"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.8ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought be1bbaed-3bf7-463c-845c-b4253a33ce22"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.462449"], ["updated_at", "2019-02-17 18:36:09.462449"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.5ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 164eb05f-0f7d-491d-a087-9174b4248bb4"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.467672"], ["updated_at", "2019-02-17 18:36:09.467672"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought a97d9d28-340b-49b1-bba9-860657f28da3"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.471396"], ["updated_at", "2019-02-17 18:36:09.471396"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 5208383b-39ba-407e-ba0f-031cb83cc29b"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.474830"], ["updated_at", "2019-02-17 18:36:09.474830"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought c853e90a-b794-4da7-929c-51ac902a3e1d"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.478093"], ["updated_at", "2019-02-17 18:36:09.478093"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 077f1a82-5345-4bb0-b79d-321dfd2e10ea"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.481054"], ["updated_at", "2019-02-17 18:36:09.481054"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 34167fdc-c0a7-409e-819a-2f7433b81967"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.483785"], ["updated_at", "2019-02-17 18:36:09.483785"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 4d01d24b-7543-4bba-9213-b82ef111ce6b"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.486280"], ["updated_at", "2019-02-17 18:36:09.486280"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 9ccb80cc-a97d-4e6c-bf2d-185493dfed9f"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.488632"], ["updated_at", "2019-02-17 18:36:09.488632"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought f331ec73-93e4-42d8-9f06-72d9dba9c62f"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.491162"], ["updated_at", "2019-02-17 18:36:09.491162"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought daf47c68-99c3-4644-b380-bdb8adb1a248"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.493666"], ["updated_at", "2019-02-17 18:36:09.493666"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought b01c163b-fdfa-4558-9888-16250fa561f6"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.496046"], ["updated_at", "2019-02-17 18:36:09.496046"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought b103d833-4908-401d-98e6-eb7d93a08fca"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.503677"], ["updated_at", "2019-02-17 18:36:09.503677"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought e1b777ba-bdb3-45ac-a4b0-229f6590372c"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.506928"], ["updated_at", "2019-02-17 18:36:09.506928"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 76681705-49f3-4eed-b17b-6079d22e952b"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.510002"], ["updated_at", "2019-02-17 18:36:09.510002"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought f110eb91-6b5f-4dda-8694-5075777be523"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.513023"], ["updated_at", "2019-02-17 18:36:09.513023"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 3ca73f78-63ab-4113-9db4-ffe055b8f2f4"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.516126"], ["updated_at", "2019-02-17 18:36:09.516126"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 6211e647-a584-42b4-9ba6-5223e09270c2"], ["user_id", 113], ["created_at", "2019-02-17 18:36:09.519144"], ["updated_at", "2019-02-17 18:36:09.519144"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ThoughtsController#index as JSON
+  Parameters: {"limit"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  [1m[36mThought Load (1.3ms)[0m  [1m[34mSELECT  "thoughts".* FROM "thoughts" ORDER BY "thoughts"."updated_at" DESC LIMIT $1[0m  [["LIMIT", 5]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.7ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$MAGQp7ad.FLfN.6XIY9XB.C2H2j2eR2HyQaaeFmWfIuSarOulA116"], ["salt", "c0142b4e-44d8-48eb-9971-027318329149"], ["created_at", "2019-02-17 18:36:09.536052"], ["updated_at", "2019-02-17 18:36:09.536052"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (1.1ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 69ac7c08-6a2a-4f89-96aa-8192dabe6f18"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.542984"], ["updated_at", "2019-02-17 18:36:09.542984"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.6ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 86fd87b9-0948-40ab-933d-bb367552e51b"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.548421"], ["updated_at", "2019-02-17 18:36:09.548421"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.8ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 3385aa72-cc85-484d-9a6c-793faaad73a9"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.552529"], ["updated_at", "2019-02-17 18:36:09.552529"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought a368fbdd-75d4-4941-adf6-480dfd23a71a"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.557234"], ["updated_at", "2019-02-17 18:36:09.557234"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.6ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 1674f7ff-ed9f-45e1-91c4-e48081b4e6f1"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.561070"], ["updated_at", "2019-02-17 18:36:09.561070"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.5ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 87d81003-ddfd-42f7-aa4a-4550114865b7"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.565970"], ["updated_at", "2019-02-17 18:36:09.565970"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.4ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 3647894c-411c-45c3-a949-51ebe8129151"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.569308"], ["updated_at", "2019-02-17 18:36:09.569308"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 553d2dae-092c-464e-9792-5d19194c87ec"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.572090"], ["updated_at", "2019-02-17 18:36:09.572090"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 7a44865e-ec96-4e67-b9a0-507df4de44be"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.574513"], ["updated_at", "2019-02-17 18:36:09.574513"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.9ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought d48ebe4b-e964-48e1-935c-5a34f93039ad"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.576694"], ["updated_at", "2019-02-17 18:36:09.576694"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 98edc3bb-5122-4fb7-ba3f-ef68521000ec"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.579507"], ["updated_at", "2019-02-17 18:36:09.579507"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought a31a88c3-2593-4ace-874f-e8f083a05b97"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.581617"], ["updated_at", "2019-02-17 18:36:09.581617"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought c2c6978e-0329-4ff2-a447-646eaa0de10f"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.583825"], ["updated_at", "2019-02-17 18:36:09.583825"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought aaab4d19-0f96-4b7c-9add-d6f4fc5a277e"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.586575"], ["updated_at", "2019-02-17 18:36:09.586575"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought e3c20c19-df38-4a8c-a108-724a84159446"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.589286"], ["updated_at", "2019-02-17 18:36:09.589286"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 5114290e-7136-4f1a-a0cf-b99355e310e6"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.591677"], ["updated_at", "2019-02-17 18:36:09.591677"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought ba558f13-20fd-4537-863d-0dd1015b8652"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.594030"], ["updated_at", "2019-02-17 18:36:09.594030"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 3ea77657-450b-4ca8-a79f-de4f42373c63"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.596272"], ["updated_at", "2019-02-17 18:36:09.596272"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought c34a3a15-79a7-4149-ae65-89e951ccf3c8"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.598393"], ["updated_at", "2019-02-17 18:36:09.598393"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Sample thought 114e79ee-747d-49b2-adce-2c3758cae34e"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.600555"], ["updated_at", "2019-02-17 18:36:09.600555"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Scrambled eggs and cheddar cheese for breakfast"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.602720"], ["updated_at", "2019-02-17 18:36:09.602720"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (0.3ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "Gruyere cheese for lunch"], ["user_id", 114], ["created_at", "2019-02-17 18:36:09.604830"], ["updated_at", "2019-02-17 18:36:09.604830"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by ThoughtsController#index as JSON
+  Parameters: {"filter"=>"cheese"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  [1m[36mThought Load (3.4ms)[0m  [1m[34mSELECT  "thoughts".* FROM "thoughts" INNER JOIN (SELECT "thoughts"."id" AS pg_search_id, (ts_rank((to_tsvector('simple', coalesce("thoughts"."text"::text, ''))), (to_tsquery('simple', ''' ' || 'cheese' || ' ''')), 0)) AS rank FROM "thoughts" WHERE (((to_tsvector('simple', coalesce("thoughts"."text"::text, ''))) @@ (to_tsquery('simple', ''' ' || 'cheese' || ' '''))))) AS pg_search_c639cb5f2da1e0eaec96ab ON "thoughts"."id" = pg_search_c639cb5f2da1e0eaec96ab.pg_search_id ORDER BY pg_search_c639cb5f2da1e0eaec96ab.rank DESC, "thoughts"."id" ASC, "thoughts"."updated_at" DESC LIMIT $1[0m  [["LIMIT", 10]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 5.7ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$t8tqxl10elU/jZvgfG/r1eVoWdjewmzZrfo6RUYKPIh6gSix4LYoy"], ["salt", "62cea43d-b74a-40ee-9ac8-549f6bd2f78c"], ["created_at", "2019-02-17 18:36:09.637963"], ["updated_at", "2019-02-17 18:36:09.637963"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Processing by ThoughtsController#create as JSON
+  Parameters: {"text"=>"This is a new thought"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mThought Create (1.0ms)[0m  [1m[32mINSERT INTO "thoughts" ("text", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["text", "This is a new thought"], ["user_id", 115], ["created_at", "2019-02-17 18:36:09.662195"], ["updated_at", "2019-02-17 18:36:09.662195"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 7ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "thoughts"[0m
+  [1m[36mThought Load (1.0ms)[0m  [1m[34mSELECT  "thoughts".* FROM "thoughts" ORDER BY "thoughts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  [1m[36mThought Load (0.9ms)[0m  [1m[34mSELECT  "thoughts".* FROM "thoughts" ORDER BY "thoughts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Processing by UsersController#create as JSON
+  Parameters: {"password"=>"[FILTERED]", "username"=>"jeff"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$mFmbtyJJYa3J1ns9XYKvou2n0FgC/w2wpYEvGIEqKAtUA.neYluBG"], ["salt", "96522c2b-11e7-4540-b911-47018fc27858"], ["created_at", "2019-02-17 18:36:09.684218"], ["updated_at", "2019-02-17 18:36:09.684218"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Completed 201 Created in 9ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$j/WnuijEwW2IExeUC2fnkedqvDw9Gq3HRRGMJXo4ifHFYuMrGu9NG"], ["salt", "51cd781e-0a0b-417d-8ab5-97ed4c8b6a07"], ["created_at", "2019-02-17 18:36:09.704461"], ["updated_at", "2019-02-17 18:36:09.704461"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#create as JSON
+  Parameters: {"password"=>"[FILTERED]", "username"=>"jeff"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$WCV.2F6aQEZXbo6feB03oeS5Qt09TcYqbvd2YEHDiT79ZIIT/FCEq"], ["salt", "bc2d80ae-b168-4c59-af91-ff3da7a36fa6"], ["created_at", "2019-02-17 18:36:09.720483"], ["updated_at", "2019-02-17 18:36:09.720483"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#authenticate as JSON
+  Parameters: {"password"=>"[FILTERED]", "username"=>"jeff"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "salt", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jeff"], ["password_digest", "$2a$04$IjGnf2s1gcIoSauPXEvOE.FI5MdF8Od5jinAw.2Hgo6HduHwOXzPe"], ["salt", "160bcede-ac8c-406b-afc9-896c53da4edb"], ["created_at", "2019-02-17 18:36:09.737191"], ["updated_at", "2019-02-17 18:36:09.737191"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#authenticate as JSON
+  Parameters: {"password"=>"[FILTERED]", "username"=>"jeff"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jeff"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m

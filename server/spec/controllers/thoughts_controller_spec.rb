@@ -48,17 +48,17 @@ describe ThoughtsController do
   end
   
   context '#create' do
-    it 'can create a new user' do
-      post :create, format: :json, params: { username: 'boris', password: 'moo'}
+    it 'can create a new thought' do
+      request.headers['Authorization'] = jwt_token
+      post :create, format: :json, params: { text: 'This is a new thought' }
       
       body = JSON.parse(response.body)
       
       expect(response.status).to eq(201)
-      expect(User.count).to eq(1)
-      expect(User.first.username).to eq('boris')
+      expect(Thought.count).to eq(1)
+      expect(Thought.first.user).to eq(user)
       
-      expect(body.keys).to eq(['auth_token'])
-      expect(body['auth_token']).not_to be_nil
+      expect(body).to eq(Thought.first.api_response_json)
     end
   end
 end

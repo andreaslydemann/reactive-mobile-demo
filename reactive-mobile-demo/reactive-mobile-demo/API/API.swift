@@ -10,31 +10,27 @@ class API: Service {
     var users:      Resource { return resource("/users") }
     var thoughts:   Resource { return resource("/thoughts") }
 
-    func signUp(username: String, password: String) {
-        auth(resource: users, username: username, password: password)
+    func signUp(username: String, password: String) -> Request {
+        return auth(resource: users, username: username, password: password)
     }
 
-    func login(username: String, password: String) {
-        auth(resource: login, username: username, password: password)
+    func login(username: String, password: String) -> Request {
+        return auth(resource: login, username: username, password: password)
     }
 
-    func auth(resource: Resource, username: String, password: String) {
-        store.dispatch(AuthProgress(loginState: .loading))
+    func auth(resource: Resource, username: String, password: String) -> Request {
+        return resource.request(.post, json: ["username": username, "password": password])
+    }
 
-        resource.request(.post, json: ["username": username, "password": password])
-            .onSuccess { _ in
+    func fetchThoughts(token: String, filter: String?) -> Request {
+        return thoughts.request(.get) {
+            $0.setValue(token, forHTTPHeaderField: "Authorization")
+        }
+    }
 
-                let json = resource.jsonDict
-                guard let token = json["auth_token"] as? String else {
-                    store.dispatch(AuthProgress(loginState: .error("No token received")))
-                    return
-                }
-
-                let user: User = User(value: ["username" : username]).save()
-                store.dispatch(AuthProgress(loginState: .success(user: user, token: token)))
-            }
-            .onFailure { error in
-                store.dispatch(AuthProgress(loginState: .error(error.userMessage)))
+    func createThought(token: String, text: String) -> Request {
+        return thoughts.request(.post, json: ["text" : text]) {
+            $0.setValue(token, forHTTPHeaderField: "Authorization")
         }
     }
 }

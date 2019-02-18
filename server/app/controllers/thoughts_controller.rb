@@ -1,8 +1,8 @@
 class ThoughtsController < ApplicationController
   def create
     text = params.require(:text)
-    Thought.create(text: text, user: current_user)
-    render json: {}, status: 201
+    thought = Thought.create!(text: text, user: current_user)
+    render json: thought.api_response_json, status: 201
   end
   
   def index

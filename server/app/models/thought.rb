@@ -19,7 +19,8 @@ class Thought < ApplicationRecord
     {
         'text' => text,
         'by' => user.username,
-        'created_at' => created_at.to_i
+        'timestamp' => created_at.to_i,
+        'id' => id
     }
   end
 end

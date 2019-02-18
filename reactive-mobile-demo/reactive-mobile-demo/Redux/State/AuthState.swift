@@ -1,14 +1,9 @@
 
 import ReSwift
 
-enum LoginState {
-    case none
-    case error(String)
-    case success(user: User, token: String)
-    case loading
-}
-
 struct AuthState: StateType {
-    var loginState: LoginState = .none
+    var loading: Bool = false
+    var authError: String? = nil
+    var jwtToken: String? = nil
     var currentUser: User? = nil
 }

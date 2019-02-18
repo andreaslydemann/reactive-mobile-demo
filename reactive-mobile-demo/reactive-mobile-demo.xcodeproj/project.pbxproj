@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0140D2AA51327C8E254FA0FC /* Pods_reactive_mobile_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED4B242339765747E4914A7 /* Pods_reactive_mobile_demo.framework */; };
 		89AEE10422186BC60084FC5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE10322186BC60084FC5C /* AppDelegate.swift */; };
-		89AEE10622186BC60084FC5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE10522186BC60084FC5C /* ViewController.swift */; };
+		89AEE10622186BC60084FC5C /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE10522186BC60084FC5C /* AuthViewController.swift */; };
 		89AEE10922186BC60084FC5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89AEE10722186BC60084FC5C /* Main.storyboard */; };
 		89AEE10B22186BCC0084FC5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89AEE10A22186BCC0084FC5C /* Assets.xcassets */; };
 		89AEE10E22186BCC0084FC5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89AEE10C22186BCC0084FC5C /* LaunchScreen.storyboard */; };
@@ -21,10 +21,13 @@
 		89AEE13422187E4D0084FC5C /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE13322187E4D0084FC5C /* Thought.swift */; };
 		89AEE136221881660084FC5C /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE135221881660084FC5C /* AuthState.swift */; };
 		89AEE138221882B00084FC5C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE137221882B00084FC5C /* API.swift */; };
-		89AEE13A221887610084FC5C /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE139221887610084FC5C /* UserActions.swift */; };
+		89AEE13A221887610084FC5C /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE139221887610084FC5C /* AuthActions.swift */; };
 		89AEE13C221893CC0084FC5C /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE13B221893CC0084FC5C /* AppModel.swift */; };
 		89AEE13E221896A80084FC5C /* AuthReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE13D221896A80084FC5C /* AuthReducer.swift */; };
 		89AEE1402218975A0084FC5C /* ThoughtsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE13F2218975A0084FC5C /* ThoughtsReducer.swift */; };
+		89AEE14222199BBA0084FC5C /* ThoughtActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE14122199BBA0084FC5C /* ThoughtActions.swift */; };
+		89AEE1442219EA340084FC5C /* ThoughtsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1432219EA340084FC5C /* ThoughtsState.swift */; };
+		89AEE1472219F0FE0084FC5C /* ThoughtsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1462219F0FE0084FC5C /* ThoughtsObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +45,7 @@
 		2ED4B242339765747E4914A7 /* Pods_reactive_mobile_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_reactive_mobile_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89AEE10022186BC60084FC5C /* reactive-mobile-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "reactive-mobile-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89AEE10322186BC60084FC5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		89AEE10522186BC60084FC5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		89AEE10522186BC60084FC5C /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		89AEE10822186BC60084FC5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89AEE10A22186BCC0084FC5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89AEE10D22186BCC0084FC5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,10 +60,13 @@
 		89AEE13322187E4D0084FC5C /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		89AEE135221881660084FC5C /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
 		89AEE137221882B00084FC5C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		89AEE139221887610084FC5C /* UserActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActions.swift; sourceTree = "<group>"; };
+		89AEE139221887610084FC5C /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		89AEE13B221893CC0084FC5C /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		89AEE13D221896A80084FC5C /* AuthReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReducer.swift; sourceTree = "<group>"; };
 		89AEE13F2218975A0084FC5C /* ThoughtsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsReducer.swift; sourceTree = "<group>"; };
+		89AEE14122199BBA0084FC5C /* ThoughtActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtActions.swift; sourceTree = "<group>"; };
+		89AEE1432219EA340084FC5C /* ThoughtsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsState.swift; sourceTree = "<group>"; };
+		89AEE1462219F0FE0084FC5C /* ThoughtsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsObserver.swift; sourceTree = "<group>"; };
 		BAEE11F2E71CF650A6AB3C97 /* Pods-reactive-mobile-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactive-mobile-demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-reactive-mobile-demo/Pods-reactive-mobile-demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +121,7 @@
 		89AEE10222186BC60084FC5C /* reactive-mobile-demo */ = {
 			isa = PBXGroup;
 			children = (
+				89AEE1452219F0E70084FC5C /* Observers */,
 				89AEE13022187A6B0084FC5C /* Models */,
 				89AEE12F2218787A0084FC5C /* ViewControllers */,
 				89AEE124221870460084FC5C /* Redux */,
@@ -172,6 +179,7 @@
 			children = (
 				89AEE12B221870DE0084FC5C /* AppState.swift */,
 				89AEE135221881660084FC5C /* AuthState.swift */,
+				89AEE1432219EA340084FC5C /* ThoughtsState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -179,7 +187,8 @@
 		89AEE127221870790084FC5C /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				89AEE139221887610084FC5C /* UserActions.swift */,
+				89AEE139221887610084FC5C /* AuthActions.swift */,
+				89AEE14122199BBA0084FC5C /* ThoughtActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -194,7 +203,7 @@
 		89AEE12F2218787A0084FC5C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				89AEE10522186BC60084FC5C /* ViewController.swift */,
+				89AEE10522186BC60084FC5C /* AuthViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -207,6 +216,14 @@
 				89AEE13B221893CC0084FC5C /* AppModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		89AEE1452219F0E70084FC5C /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				89AEE1462219F0FE0084FC5C /* ThoughtsObserver.swift */,
+			);
+			path = Observers;
 			sourceTree = "<group>";
 		};
 		AA78BB4E6596D92197912F9C /* Frameworks */ = {
@@ -377,17 +394,20 @@
 			files = (
 				89AEE13E221896A80084FC5C /* AuthReducer.swift in Sources */,
 				89AEE12A221870AF0084FC5C /* Store.swift in Sources */,
-				89AEE10622186BC60084FC5C /* ViewController.swift in Sources */,
+				89AEE10622186BC60084FC5C /* AuthViewController.swift in Sources */,
+				89AEE14222199BBA0084FC5C /* ThoughtActions.swift in Sources */,
 				89AEE13C221893CC0084FC5C /* AppModel.swift in Sources */,
 				89AEE13222187A7F0084FC5C /* User.swift in Sources */,
 				89AEE10422186BC60084FC5C /* AppDelegate.swift in Sources */,
 				89AEE12C221870DE0084FC5C /* AppState.swift in Sources */,
 				89AEE136221881660084FC5C /* AuthState.swift in Sources */,
 				89AEE1402218975A0084FC5C /* ThoughtsReducer.swift in Sources */,
-				89AEE13A221887610084FC5C /* UserActions.swift in Sources */,
+				89AEE13A221887610084FC5C /* AuthActions.swift in Sources */,
+				89AEE1442219EA340084FC5C /* ThoughtsState.swift in Sources */,
 				89AEE13422187E4D0084FC5C /* Thought.swift in Sources */,
 				89AEE138221882B00084FC5C /* API.swift in Sources */,
 				89AEE12E221871420084FC5C /* MainReducer.swift in Sources */,
+				89AEE1472219F0FE0084FC5C /* ThoughtsObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
