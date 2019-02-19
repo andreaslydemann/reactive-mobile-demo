@@ -27,8 +27,11 @@
 		89AEE1402218975A0084FC5C /* ThoughtsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE13F2218975A0084FC5C /* ThoughtsReducer.swift */; };
 		89AEE14222199BBA0084FC5C /* ThoughtActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE14122199BBA0084FC5C /* ThoughtActions.swift */; };
 		89AEE1442219EA340084FC5C /* ThoughtsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1432219EA340084FC5C /* ThoughtsState.swift */; };
-		89AEE1472219F0FE0084FC5C /* ThoughtsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1462219F0FE0084FC5C /* ThoughtsObserver.swift */; };
+		89AEE1472219F0FE0084FC5C /* ThoughtsSyncWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1462219F0FE0084FC5C /* ThoughtsSyncWorker.swift */; };
 		89AEE149221BA5FC0084FC5C /* ThoughtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE148221BA5FC0084FC5C /* ThoughtsViewController.swift */; };
+		89AEE151221BD79A0084FC5C /* LoggerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE150221BD79A0084FC5C /* LoggerMiddleware.swift */; };
+		89AEE156221C04150084FC5C /* ThoughtsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE155221C04150084FC5C /* ThoughtsObserver.swift */; };
+		89AEE159221C047B0084FC5C /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE158221C047B0084FC5C /* Worker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +70,11 @@
 		89AEE13F2218975A0084FC5C /* ThoughtsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsReducer.swift; sourceTree = "<group>"; };
 		89AEE14122199BBA0084FC5C /* ThoughtActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtActions.swift; sourceTree = "<group>"; };
 		89AEE1432219EA340084FC5C /* ThoughtsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsState.swift; sourceTree = "<group>"; };
-		89AEE1462219F0FE0084FC5C /* ThoughtsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsObserver.swift; sourceTree = "<group>"; };
+		89AEE1462219F0FE0084FC5C /* ThoughtsSyncWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsSyncWorker.swift; sourceTree = "<group>"; };
 		89AEE148221BA5FC0084FC5C /* ThoughtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsViewController.swift; sourceTree = "<group>"; };
+		89AEE150221BD79A0084FC5C /* LoggerMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerMiddleware.swift; sourceTree = "<group>"; };
+		89AEE155221C04150084FC5C /* ThoughtsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsObserver.swift; sourceTree = "<group>"; };
+		89AEE158221C047B0084FC5C /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
 		BAEE11F2E71CF650A6AB3C97 /* Pods-reactive-mobile-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactive-mobile-demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-reactive-mobile-demo/Pods-reactive-mobile-demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,7 +129,7 @@
 		89AEE10222186BC60084FC5C /* reactive-mobile-demo */ = {
 			isa = PBXGroup;
 			children = (
-				89AEE1452219F0E70084FC5C /* Observers */,
+				89AEE157221C04670084FC5C /* Workers */,
 				89AEE13022187A6B0084FC5C /* Models */,
 				89AEE12F2218787A0084FC5C /* ViewControllers */,
 				89AEE124221870460084FC5C /* Redux */,
@@ -157,6 +163,7 @@
 		89AEE124221870460084FC5C /* Redux */ = {
 			isa = PBXGroup;
 			children = (
+				89AEE14F221BD7740084FC5C /* Middleware */,
 				89AEE127221870790084FC5C /* Actions */,
 				89AEE126221870740084FC5C /* State */,
 				89AEE1252218706E0084FC5C /* Reducrs */,
@@ -213,12 +220,38 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		89AEE1452219F0E70084FC5C /* Observers */ = {
+		89AEE1452219F0E70084FC5C /* SyncWorkers */ = {
 			isa = PBXGroup;
 			children = (
-				89AEE1462219F0FE0084FC5C /* ThoughtsObserver.swift */,
+				89AEE1462219F0FE0084FC5C /* ThoughtsSyncWorker.swift */,
 			);
-			path = Observers;
+			path = SyncWorkers;
+			sourceTree = "<group>";
+		};
+		89AEE14F221BD7740084FC5C /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				89AEE150221BD79A0084FC5C /* LoggerMiddleware.swift */,
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
+		89AEE154221C03E10084FC5C /* DatabaseObservers */ = {
+			isa = PBXGroup;
+			children = (
+				89AEE155221C04150084FC5C /* ThoughtsObserver.swift */,
+			);
+			path = DatabaseObservers;
+			sourceTree = "<group>";
+		};
+		89AEE157221C04670084FC5C /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				89AEE154221C03E10084FC5C /* DatabaseObservers */,
+				89AEE1452219F0E70084FC5C /* SyncWorkers */,
+				89AEE158221C047B0084FC5C /* Worker.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 		AA78BB4E6596D92197912F9C /* Frameworks */ = {
@@ -392,18 +425,21 @@
 				89AEE12A221870AF0084FC5C /* Store.swift in Sources */,
 				89AEE10622186BC60084FC5C /* AuthViewController.swift in Sources */,
 				89AEE14222199BBA0084FC5C /* ThoughtActions.swift in Sources */,
+				89AEE159221C047B0084FC5C /* Worker.swift in Sources */,
 				89AEE13C221893CC0084FC5C /* AppModel.swift in Sources */,
 				89AEE13222187A7F0084FC5C /* User.swift in Sources */,
 				89AEE10422186BC60084FC5C /* AppDelegate.swift in Sources */,
+				89AEE151221BD79A0084FC5C /* LoggerMiddleware.swift in Sources */,
 				89AEE12C221870DE0084FC5C /* AppState.swift in Sources */,
 				89AEE136221881660084FC5C /* AuthState.swift in Sources */,
+				89AEE156221C04150084FC5C /* ThoughtsObserver.swift in Sources */,
 				89AEE1402218975A0084FC5C /* ThoughtsReducer.swift in Sources */,
 				89AEE13A221887610084FC5C /* AuthActions.swift in Sources */,
 				89AEE1442219EA340084FC5C /* ThoughtsState.swift in Sources */,
 				89AEE13422187E4D0084FC5C /* Thought.swift in Sources */,
 				89AEE138221882B00084FC5C /* API.swift in Sources */,
 				89AEE12E221871420084FC5C /* MainReducer.swift in Sources */,
-				89AEE1472219F0FE0084FC5C /* ThoughtsObserver.swift in Sources */,
+				89AEE1472219F0FE0084FC5C /* ThoughtsSyncWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

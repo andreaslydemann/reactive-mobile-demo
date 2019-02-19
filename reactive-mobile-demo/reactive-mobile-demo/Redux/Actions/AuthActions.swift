@@ -14,7 +14,7 @@ struct AuthProgress: Action {
     let payload: AuthProgressPayload
 }
 
-func createLogoutAction() -> Thunk<AppState> {
+func logoutAction() -> Thunk<AppState> {
     return Thunk<AppState> { dispatch, getState in
 
         // Crude way to logout - flush the whole database

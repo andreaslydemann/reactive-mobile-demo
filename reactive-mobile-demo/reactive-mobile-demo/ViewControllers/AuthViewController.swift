@@ -86,6 +86,6 @@ class AuthViewController: UIViewController, StoreSubscriber, UITextFieldDelegate
     }
 
     @IBAction func logoutSegue(segue: UIStoryboardSegue) {
-        store.dispatch(createLogoutAction())
+        store.dispatch(logoutAction())
     }
 }

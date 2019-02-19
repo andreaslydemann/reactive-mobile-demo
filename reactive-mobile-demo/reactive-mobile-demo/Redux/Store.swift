@@ -6,7 +6,7 @@ import ReSwiftThunk
 let store = Store(
     reducer: mainReducer,
     state: loadAppState(),
-    middleware: [createThunksMiddleware()])
+    middleware: [createThunksMiddleware(), loggerMiddleware])
 
 fileprivate func loadAppState() -> AppState {
     var state = AppState()

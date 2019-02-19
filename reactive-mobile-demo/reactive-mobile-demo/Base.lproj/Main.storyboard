@@ -122,8 +122,8 @@
                                     <action selector="postThoughtPressed:" destination="47o-Bg-v7V" eventType="touchUpInside" id="2NH-5P-gcp"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43m-fw-Pec">
-                                <rect key="frame" x="156" y="98" width="63.5" height="55"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43m-fw-Pec">
+                                <rect key="frame" x="179" y="98" width="17" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="NMZ-Ie-j7D"/>
                                 </constraints>

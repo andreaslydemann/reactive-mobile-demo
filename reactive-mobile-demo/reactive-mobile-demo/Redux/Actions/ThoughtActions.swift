@@ -9,8 +9,8 @@ enum ThoughtsRequestPayload {
 }
 
 enum LoadedThoughtsPayload {
-    case initial(thoughtIds: [Int])
-    case update(thoughtIds: [Int], deletions: [Int], insertions: [Int], modifications: [Int])
+    case initial(thoughts: [Thought])
+    case update(thoughts: [Thought], deletions: [Int], insertions: [Int], modifications: [Int])
     case error(Error)
 }
 
@@ -26,7 +26,7 @@ struct LoadedThoughts: Action {
     let payload: LoadedThoughtsPayload
 }
 
-func fetchThoughtsAction(filter: String?) -> Thunk<AppState> {
+func fetchThoughtsAction() -> Thunk<AppState> {
     return Thunk<AppState> { dispatch, getState in
         dispatch(FetchThoughts(payload: .loading))
 
@@ -35,7 +35,7 @@ func fetchThoughtsAction(filter: String?) -> Thunk<AppState> {
             return
         }
 
-        SharedAPI.fetchThoughts(token: token, filter: filter)
+        SharedAPI.fetchThoughts(token: token)
             .onSuccess({ data in
                 data.jsonArray.forEach { Thought(value: $0).save() }
                 dispatch(FetchThoughts(payload: .success))
@@ -55,9 +55,16 @@ func createThoughtAction(text: String) -> Thunk<AppState> {
             return
         }
 
+        guard let user = getState()?.authState.currentUser() else {
+            dispatch(FetchThoughts(payload: .error("User is not logged in")))
+            return
+        }
+
+        // Persist the thought locally
+        Thought(value: ["text" : text, "by" : user.username, "timestamp": Date()]).save()
+
         SharedAPI.createThought(token: token, text: text)
             .onSuccess({ data in
-                Thought(value: data.jsonDict).save()
                 dispatch(CreateThought(payload: .success))
             })
             .onFailure({ error in

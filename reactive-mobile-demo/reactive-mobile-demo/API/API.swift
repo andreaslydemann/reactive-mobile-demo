@@ -22,7 +22,7 @@ class API: Service {
         return resource.request(.post, json: ["username": username, "password": password])
     }
 
-    func fetchThoughts(token: String, filter: String?) -> Request {
+    func fetchThoughts(token: String) -> Request {
         return thoughts.request(.get) {
             $0.setValue(token, forHTTPHeaderField: "Authorization")
         }

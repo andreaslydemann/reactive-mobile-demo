@@ -1,0 +1,4 @@
+
+protocol Worker {
+    func run()
+}

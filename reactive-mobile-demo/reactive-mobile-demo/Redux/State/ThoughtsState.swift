@@ -12,15 +12,15 @@ struct ThoughtsState: StateType {
         self.loadedThoughtsPayload = payload
     }
 
-    func thoughtIds() -> [Int] {
+    func thoughts() -> [Thought] {
         guard let thoughtsPayload = self.loadedThoughtsPayload else {
             return []
         }
         switch thoughtsPayload {
-        case .initial(let thoughtIds):
-            return thoughtIds
-        case .update(let thoughtIds, _, _, _):
-            return thoughtIds
+        case .initial(let thoughts):
+            return thoughts
+        case .update(let thoughts, _, _, _):
+            return thoughts
         default:
             return []
         }
