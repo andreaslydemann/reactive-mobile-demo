@@ -26,8 +26,9 @@ describe UsersController do
       post :authenticate, params: { username: 'jeff', password: 'pass' }, format: :json
       
       body = JSON.parse(response.body)
-      expect(body.keys).to eq(['auth_token'])
+      expect(body.keys).to eq(%w(auth_token user_id))
       expect(body['auth_token']).not_to be_nil
+      expect(body['user_id'].to_i).to eq(User.first.id)
     end
     
     it 'rejects authentication with invalid credentials' do

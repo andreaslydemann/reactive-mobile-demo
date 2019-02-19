@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     salt = SecureRandom.uuid
     user = User.create!(username: username, salt: salt, password: salt + password)
     token = AuthenticateUser.call(username, password, user.salt)
-    render json: { auth_token: token }, status: 201
+    render json: { auth_token: token, user_id: user.id }, status: 201
   end
   
   def authenticate
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     command = AuthenticateUser.call(username, password, user.salt)
 
     if command.success?
-      render json: { auth_token: command.result }
+      render json: { auth_token: command.result, user_id: user.id }
     else
       render json: { error: command.errors }, status: :unauthorized
     end
