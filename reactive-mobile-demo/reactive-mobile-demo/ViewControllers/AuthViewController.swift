@@ -14,12 +14,24 @@ class AuthViewController: UIViewController, StoreSubscriber, UITextFieldDelegate
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        // Ensure password field stays blank
+        self.passwordTextField.text = ""
+
         store.subscribe(self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         store.unsubscribe(self)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if store.state.authState.loggedIn() {
+            self.goToThoughtsList()
+        }
     }
 
     func newState(state: AppState) {
@@ -34,10 +46,30 @@ class AuthViewController: UIViewController, StoreSubscriber, UITextFieldDelegate
         if let error = authState.authError {
             // Auth Failure
             alertError(error)
-        } else if let _ = authState.currentUser {
+
+        } else if authState.loggedIn() {
             // Auth Success
             goToThoughtsList()
         }
+    }
+    
+    @IBAction func loginPressed(_ sender: Any) {
+        let username = self.usernameTextField.text!
+        let password = self.passwordTextField.text!
+        let action = loginAction(username: username, password: password)
+        store.dispatch(action)
+    }
+
+    @IBAction func registerPressed(_ sender: Any) {
+        let username = self.usernameTextField.text!
+        let password = self.passwordTextField.text!
+        let action = createUserAction(username: username, password: password)
+        store.dispatch(action)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
     func alertError(_ message: String) {
@@ -52,29 +84,8 @@ class AuthViewController: UIViewController, StoreSubscriber, UITextFieldDelegate
     func goToThoughtsList() {
         self.performSegue(withIdentifier: "showThoughtsSegue", sender: self)
     }
-    
-    @IBAction func loginPressed(_ sender: Any) {
-        guard let username = self.usernameTextField.text,
-            let password = self.passwordTextField.text else {
-            alertError("Neither username nor password can be blank")
-            return
-        }
-        let action = loginAction(username: username, password: password)
-        store.dispatch(action)
-    }
 
-    @IBAction func registerPressed(_ sender: Any) {
-        guard let username = self.usernameTextField.text,
-            let password = self.passwordTextField.text else {
-                alertError("Neither username nor password can be blank")
-                return
-        }
-        let action = createUserAction(username: username, password: password)
-        store.dispatch(action)
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    @IBAction func logoutSegue(segue: UIStoryboardSegue) {
+        store.dispatch(createLogoutAction())
     }
 }

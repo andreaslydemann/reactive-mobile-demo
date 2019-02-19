@@ -16,23 +16,25 @@ func authProgressReducer(authProgress: AuthProgress, state: AppState?) -> AuthSt
     let oldAuthState = state?.authState ?? AuthState()
     var newAuthState = AuthState()
 
-    newAuthState.jwtToken = oldAuthState.jwtToken
-    newAuthState.currentUser = oldAuthState.currentUser
+    newAuthState.currentUserId = oldAuthState.currentUserId
 
     switch authProgress.payload {
         case .error(let msg):
             newAuthState.authError = msg
             break
 
-        case .success(let user, let token):
-            newAuthState.currentUser = user
-            newAuthState.jwtToken = token
+        case .success(let user):
+            newAuthState.currentUserId = user.id
             newAuthState.authError = nil
             break
 
         case .loading:
             newAuthState.loading = true
             break
+
+        case .logout:
+            // All info is cleared
+            return AuthState()
     }
 
     return newAuthState

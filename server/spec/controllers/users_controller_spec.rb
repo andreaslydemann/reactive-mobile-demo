@@ -15,7 +15,7 @@ describe UsersController do
 
       post :create, params: { username: 'jeff', password: 'moo' }, format: :json
       expect(User.count).to eq(1)
-      expect(response.status).to eq(401)
+      expect(response.status).to eq(400)
     end
   end
   

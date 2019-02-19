@@ -157,7 +157,6 @@
 		89AEE124221870460084FC5C /* Redux */ = {
 			isa = PBXGroup;
 			children = (
-				89AEE1282218707E0084FC5C /* Middleware */,
 				89AEE127221870790084FC5C /* Actions */,
 				89AEE126221870740084FC5C /* State */,
 				89AEE1252218706E0084FC5C /* Reducrs */,
@@ -193,13 +192,6 @@
 				89AEE14122199BBA0084FC5C /* ThoughtActions.swift */,
 			);
 			path = Actions;
-			sourceTree = "<group>";
-		};
-		89AEE1282218707E0084FC5C /* Middleware */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Middleware;
 			sourceTree = "<group>";
 		};
 		89AEE12F2218787A0084FC5C /* ViewControllers */ = {

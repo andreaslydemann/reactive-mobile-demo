@@ -30,7 +30,7 @@ func fetchThoughtsAction(filter: String?) -> Thunk<AppState> {
     return Thunk<AppState> { dispatch, getState in
         dispatch(FetchThoughts(payload: .loading))
 
-        guard let token = getState()?.authState.jwtToken else {
+        guard let token = getState()?.authState.jwtToken() else {
             dispatch(FetchThoughts(payload: .error("User is not logged in")))
             return
         }
@@ -50,10 +50,11 @@ func createThoughtAction(text: String) -> Thunk<AppState> {
     return Thunk<AppState> { dispatch, getState in
         dispatch(CreateThought(payload: .loading))
 
-        guard let token = getState()?.authState.jwtToken else {
-            dispatch(CreateThought(payload: .error("User is not logged in")))
+        guard let token = getState()?.authState.jwtToken() else {
+            dispatch(FetchThoughts(payload: .error("User is not logged in")))
             return
         }
+
         SharedAPI.createThought(token: token, text: text)
             .onSuccess({ data in
                 Thought(value: data.jsonDict).save()

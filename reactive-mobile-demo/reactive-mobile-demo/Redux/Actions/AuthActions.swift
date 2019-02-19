@@ -1,15 +1,30 @@
 
+import RealmSwift
 import ReSwift
 import ReSwiftThunk
 
 enum AuthProgressPayload {
     case error(String)
-    case success(user: User, token: String)
+    case success(user: User)
     case loading
+    case logout
 }
 
 struct AuthProgress: Action {
     let payload: AuthProgressPayload
+}
+
+func createLogoutAction() -> Thunk<AppState> {
+    return Thunk<AppState> { dispatch, getState in
+
+        // Crude way to logout - flush the whole database
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
+        
+        dispatch(AuthProgress(payload: .logout))
+    }
 }
 
 func createUserAction(username: String, password: String) -> Thunk<AppState> {
@@ -20,7 +35,7 @@ func createUserAction(username: String, password: String) -> Thunk<AppState> {
             }
             .onFailure { error in
                 let errorMsg = error.entity?.jsonDict["error"] as? String ?? error.userMessage
-                dispatch(AuthProgress(payload: .error(errMsg)))
+                dispatch(AuthProgress(payload: .error(errorMsg)))
         }
     }
 }
@@ -47,6 +62,11 @@ func authSuccess(json: [String: Any], username: String, dispatch: DispatchFuncti
         return
     }
 
-    let user: User = User(value: ["username" : username]).save()
-    dispatch(AuthProgress(payload: .success(user: user, token: token)))
+    guard let id = json["user_id"] as? Int else {
+        dispatch(AuthProgress(payload: .error("No userId received")))
+        return
+    }
+
+    let user: User = User(value: ["username": username, "id": id, "jwtToken": token]).save()
+    dispatch(AuthProgress(payload: .success(user: user)))
 }

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     
     salt = SecureRandom.uuid
     user = User.create!(username: username, salt: salt, password: salt + password)
-    token = AuthenticateUser.call(username, password, user.salt)
+    token = AuthenticateUser.call(username, password, user.salt).result
     render json: { auth_token: token, user_id: user.id }, status: 201
   end
   

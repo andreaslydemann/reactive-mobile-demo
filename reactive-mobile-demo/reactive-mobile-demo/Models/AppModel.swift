@@ -11,4 +11,9 @@ class AppModel: Object {
         }
         return self
     }
+
+    class func find(_ key: Any) -> Self? {
+        let realm = try! Realm()
+        return realm.object(ofType: self, forPrimaryKey: key)
+    }
 }

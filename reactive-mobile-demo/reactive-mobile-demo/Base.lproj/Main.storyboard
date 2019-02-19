@@ -35,7 +35,7 @@
                                 <rect key="frame" x="60" y="222" width="255" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="one-time-code"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aV2-Qh-S3A">
                                 <rect key="frame" x="156" y="98" width="63.5" height="55"/>
@@ -87,6 +87,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="Obc-kc-0b7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
@@ -137,8 +138,7 @@
                                 </constraints>
                                 <state key="normal" title="logout"/>
                                 <connections>
-                                    <action selector="logoutPressed:" destination="47o-Bg-v7V" eventType="touchUpInside" id="3BY-Du-Fi5"/>
-                                    <segue destination="ZIG-Zd-5DA" kind="unwind" unwindAction="unwindSegueWithSegue:" id="duP-T5-cv5"/>
+                                    <segue destination="Obc-kc-0b7" kind="unwind" unwindAction="logoutSegueWithSegue:" id="mwD-Pp-dUD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -161,12 +161,12 @@
                         <viewLayoutGuide key="safeArea" id="iax-Nc-olG"/>
                     </view>
                     <connections>
+                        <outlet property="headerLabel" destination="43m-fw-Pec" id="pKp-xm-jmO"/>
                         <outlet property="newThoughtTextfield" destination="giB-vt-qSS" id="Dbj-wu-tNf"/>
                         <outlet property="thoughtsTable" destination="syp-vE-jzV" id="M6u-5l-0yv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s4a-MY-P9o" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="ZIG-Zd-5DA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="837.60000000000002" y="133.5832083958021"/>
         </scene>
