@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     password = params.require(:password)
 
     existing = User.find_by_username(username) 
-    return render json: {}, status: 401 if existing.present?
+    return render json: { error: 'User already exists' }, status: 400 if existing.present?
     
     salt = SecureRandom.uuid
     user = User.create!(username: username, salt: salt, password: salt + password)

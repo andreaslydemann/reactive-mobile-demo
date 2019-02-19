@@ -59,8 +59,8 @@ class AuthViewController: UIViewController, StoreSubscriber, UITextFieldDelegate
             alertError("Neither username nor password can be blank")
             return
         }
-
-        store.dispatch(loginAction(username: username, password: password))
+        let action = loginAction(username: username, password: password)
+        store.dispatch(action)
     }
 
     @IBAction func registerPressed(_ sender: Any) {
@@ -69,8 +69,8 @@ class AuthViewController: UIViewController, StoreSubscriber, UITextFieldDelegate
                 alertError("Neither username nor password can be blank")
                 return
         }
-
-        store.dispatch(loginAction(username: username, password: password))
+        let action = createUserAction(username: username, password: password)
+        store.dispatch(action)
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

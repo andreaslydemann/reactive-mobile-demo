@@ -19,7 +19,8 @@ func createUserAction(username: String, password: String) -> Thunk<AppState> {
                 authSuccess(json: data.jsonDict, username: username, dispatch: dispatch)
             }
             .onFailure { error in
-                dispatch(AuthProgress(payload: .error(error.userMessage)))
+                let errorMsg = error.entity?.jsonDict["error"] as? String ?? error.userMessage
+                dispatch(AuthProgress(payload: .error(errMsg)))
         }
     }
 }
@@ -33,7 +34,8 @@ func loginAction(username: String, password: String) -> Thunk<AppState> {
                 authSuccess(json: data.jsonDict, username: username, dispatch: dispatch)
             }
             .onFailure { error in
-                dispatch(AuthProgress(payload: .error(error.userMessage)))
+                let errorMsg = error.entity?.jsonDict["error"] as? String ?? error.userMessage
+                dispatch(AuthProgress(payload: .error(errorMsg)))
         }
     };
 }
