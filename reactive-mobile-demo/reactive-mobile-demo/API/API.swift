@@ -6,7 +6,7 @@ class API: Service {
         super.init(baseURL: "http://52.136.224.178")
     }
 
-    var login:      Resource { return resource("/users/authenticate") }
+    var login:      Resource { return resource("/authenticate") }
     var users:      Resource { return resource("/users") }
     var thoughts:   Resource { return resource("/thoughts") }
 

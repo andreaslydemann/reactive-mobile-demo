@@ -28,6 +28,7 @@
 		89AEE14222199BBA0084FC5C /* ThoughtActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE14122199BBA0084FC5C /* ThoughtActions.swift */; };
 		89AEE1442219EA340084FC5C /* ThoughtsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1432219EA340084FC5C /* ThoughtsState.swift */; };
 		89AEE1472219F0FE0084FC5C /* ThoughtsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE1462219F0FE0084FC5C /* ThoughtsObserver.swift */; };
+		89AEE149221BA5FC0084FC5C /* ThoughtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE148221BA5FC0084FC5C /* ThoughtsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		89AEE14122199BBA0084FC5C /* ThoughtActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtActions.swift; sourceTree = "<group>"; };
 		89AEE1432219EA340084FC5C /* ThoughtsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsState.swift; sourceTree = "<group>"; };
 		89AEE1462219F0FE0084FC5C /* ThoughtsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsObserver.swift; sourceTree = "<group>"; };
+		89AEE148221BA5FC0084FC5C /* ThoughtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsViewController.swift; sourceTree = "<group>"; };
 		BAEE11F2E71CF650A6AB3C97 /* Pods-reactive-mobile-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactive-mobile-demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-reactive-mobile-demo/Pods-reactive-mobile-demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				89AEE10522186BC60084FC5C /* AuthViewController.swift */,
+				89AEE148221BA5FC0084FC5C /* ThoughtsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89AEE13E221896A80084FC5C /* AuthReducer.swift in Sources */,
+				89AEE149221BA5FC0084FC5C /* ThoughtsViewController.swift in Sources */,
 				89AEE12A221870AF0084FC5C /* Store.swift in Sources */,
 				89AEE10622186BC60084FC5C /* AuthViewController.swift in Sources */,
 				89AEE14222199BBA0084FC5C /* ThoughtActions.swift in Sources */,

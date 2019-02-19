@@ -21,6 +21,8 @@ class UsersController < ApplicationController
     password = params.require(:password)
     
     user = User.find_by_username(username)
+    return render json: { error: 'User does not exist' }, status: :unauthorized if user.nil?
+    
     command = AuthenticateUser.call(username, password, user.salt)
 
     if command.success?
