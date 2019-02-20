@@ -31,7 +31,6 @@ class ThoughtsObserver: Worker {
                                                              insertions: insertions,
                                                              modifications: modifications)
 
-                // Update gets called one final time after logout, which sets a bad state
                 if store.state.authState.loggedIn() {
                     store.dispatch(LoadedThoughts(payload: payload))
                 }
@@ -39,6 +38,7 @@ class ThoughtsObserver: Worker {
 
             case .error(let error):
                 store.dispatch(LoadedThoughts(payload: .error(error)))
+                break
             }
         }
 

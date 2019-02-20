@@ -2,7 +2,6 @@
 import ReSwift
 
 struct ThoughtsState: StateType, Equatable {
-//    var loading: Bool
     var lastError: String?
     var loadedThoughtsPayload: LoadedThoughtsPayload?
 

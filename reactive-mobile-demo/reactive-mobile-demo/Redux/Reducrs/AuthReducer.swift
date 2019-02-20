@@ -15,7 +15,6 @@ fileprivate
 func authProgressReducer(authProgress: AuthProgress, state: AppState?) -> AuthState {
     let oldAuthState = state?.authState ?? AuthState()
     var newAuthState = AuthState()
-
     newAuthState.currentUserId = oldAuthState.currentUserId
 
     switch authProgress.payload {
@@ -25,7 +24,6 @@ func authProgressReducer(authProgress: AuthProgress, state: AppState?) -> AuthSt
 
         case .success(let user):
             newAuthState.currentUserId = user.id
-            newAuthState.authError = nil
             break
 
         case .loading:
@@ -33,7 +31,7 @@ func authProgressReducer(authProgress: AuthProgress, state: AppState?) -> AuthSt
             break
 
         case .logout:
-            // All info is cleared
+            // All info is cleared, return empty auth state
             return AuthState()
     }
 

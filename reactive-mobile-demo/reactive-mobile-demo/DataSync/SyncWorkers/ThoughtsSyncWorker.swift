@@ -5,7 +5,9 @@ class ThoughtsSyncWorker: StoreSubscriber, Worker  {
     private var fetchNewThoughtsTimer: Timer? = nil
 
     func run() {
-        startPollingForThoughts()
+        if store.state.authState.loggedIn() {
+            startPollingForThoughts()
+        }
     }
 
     func stop() {

@@ -7,7 +7,6 @@ class ThoughtsViewController: UIViewController, StoreSubscriber, UITableViewDele
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var newThoughtTextfield: UITextField!
     @IBOutlet var thoughtsTable: UITableView!
-    var fetchNewThoughtsTimer: Timer? = nil
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -83,6 +82,7 @@ class ThoughtsViewController: UIViewController, StoreSubscriber, UITableViewDele
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "thoughtCell")
 
         let thought = store.state.thoughtsState.thoughts()[indexPath.row]
+
         cell.textLabel?.text = thought.text
         cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = "\(thought.by): \(thought.timestamp.toFriendlyFormat())"
