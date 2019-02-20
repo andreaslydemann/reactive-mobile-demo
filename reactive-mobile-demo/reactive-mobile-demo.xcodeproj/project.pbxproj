@@ -234,12 +234,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		89AEE1452219F0E70084FC5C /* SyncWorkers */ = {
+		89AEE1452219F0E70084FC5C /* SyncServices */ = {
 			isa = PBXGroup;
 			children = (
 				89AEE1462219F0FE0084FC5C /* ThoughtsSyncWorker.swift */,
 			);
-			path = SyncWorkers;
+			path = SyncServices;
 			sourceTree = "<group>";
 		};
 		89AEE14F221BD7740084FC5C /* Middleware */ = {
@@ -262,7 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				89AEE154221C03E10084FC5C /* DatabaseObservers */,
-				89AEE1452219F0E70084FC5C /* SyncWorkers */,
+				89AEE1452219F0E70084FC5C /* SyncServices */,
 				89AEE158221C047B0084FC5C /* Worker.swift */,
 			);
 			path = DataSync;
