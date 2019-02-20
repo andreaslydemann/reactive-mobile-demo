@@ -1,13 +1,12 @@
 
 import ReSwift
 
-struct ThoughtsState: StateType {
-    var loading: Bool
+struct ThoughtsState: StateType, Equatable {
+//    var loading: Bool
     var lastError: String?
     var loadedThoughtsPayload: LoadedThoughtsPayload?
 
-    init(loading: Bool = false, lastError: String? = nil, payload: LoadedThoughtsPayload? = nil) {
-        self.loading = loading
+    init(lastError: String? = nil, payload: LoadedThoughtsPayload? = nil) {
         self.lastError = lastError
         self.loadedThoughtsPayload = payload
     }

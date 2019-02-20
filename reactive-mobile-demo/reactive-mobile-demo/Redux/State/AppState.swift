@@ -1,7 +1,7 @@
 
 import ReSwift
 
-struct AppState: StateType {
+struct AppState: StateType, Equatable {
     var authState = AuthState()
     var thoughtsState = ThoughtsState()
 }

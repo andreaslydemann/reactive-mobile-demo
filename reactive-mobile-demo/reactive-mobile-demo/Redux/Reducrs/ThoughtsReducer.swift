@@ -19,19 +19,20 @@ func thoughtsReducer(action: Action, state: AppState?) -> ThoughtsState {
 
 fileprivate
 func thoughtsRequestActionReducer(payload: ThoughtsRequestPayload, state: AppState?) -> ThoughtsState {
-    var newThoughtsState = ThoughtsState()
-
+    
     switch payload {
         case .error(let msg):
-            newThoughtsState.lastError = msg
+            print("Error making thoughts request: \(msg)")
             break
 
         case .success:
+            print("Thoughts request successful")
             break
 
         case .loading:
-            newThoughtsState.loading = true
+            print("Thoughts request loading...")
+            break
     }
 
-    return newThoughtsState
+    return state?.thoughtsState ?? ThoughtsState()
 }

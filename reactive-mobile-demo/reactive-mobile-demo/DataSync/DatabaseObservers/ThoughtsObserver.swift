@@ -5,13 +5,11 @@ class ThoughtsObserver: Worker {
     private var notificationToken: NotificationToken? = nil
     private static let sharedObserver = { return ThoughtsObserver() }
 
-    func run() {}
-
-    init() {
+    func run() {
         startObservingDatabase()
     }
 
-    deinit {
+    func stop() {
         self.notificationToken?.invalidate()
     }
     
@@ -32,7 +30,11 @@ class ThoughtsObserver: Worker {
                                                              deletions: deletions,
                                                              insertions: insertions,
                                                              modifications: modifications)
-                store.dispatch(LoadedThoughts(payload: payload))
+
+                // Update gets called one final time after logout, which sets a bad state
+                if store.state.authState.loggedIn() {
+                    store.dispatch(LoadedThoughts(payload: payload))
+                }
                 break
 
             case .error(let error):
@@ -43,3 +45,5 @@ class ThoughtsObserver: Worker {
         self.notificationToken = token
     }
 }
+
+let sharedThoughtsObserver = ThoughtsObserver()

@@ -11,12 +11,16 @@ class ThoughtsViewController: UIViewController, StoreSubscriber, UITableViewDele
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        store.subscribe(self)
+        store.subscribe(self) { sub in
+            return sub.select { state in return state.thoughtsState }.skipRepeats()
+        }
+        sharedThoughtsObserver.run()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         store.unsubscribe(self)
+        sharedThoughtsObserver.stop()
     }
     
     override func viewDidLoad() {
@@ -25,10 +29,10 @@ class ThoughtsViewController: UIViewController, StoreSubscriber, UITableViewDele
         self.thoughtsTable.dataSource = self
     }
 
-    func newState(state: AppState) {
+    func newState(state: ThoughtsState) {
         setHeaderLabel()
 
-        guard let loadedThoughts = state.thoughtsState.loadedThoughtsPayload else {
+        guard let loadedThoughts = state.loadedThoughtsPayload else {
             return
         }
         
@@ -58,7 +62,7 @@ class ThoughtsViewController: UIViewController, StoreSubscriber, UITableViewDele
 
     func setHeaderLabel() {
         if let user = store.state.authState.currentUser() {
-            self.headerLabel.text = "\(user.username)'s Chitter"
+            self.headerLabel.text = "\(user.username)'s Feed"
         }
     }
 
@@ -67,6 +71,8 @@ class ThoughtsViewController: UIViewController, StoreSubscriber, UITableViewDele
 
         let action = createThoughtAction(text: self.newThoughtTextfield.text!)
         store.dispatch(action)
+
+        self.newThoughtTextfield.text = ""
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,11 +80,13 @@ class ThoughtsViewController: UIViewController, StoreSubscriber, UITableViewDele
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "thoughtCell")
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "thoughtCell")
 
         let thought = store.state.thoughtsState.thoughts()[indexPath.row]
-        cell.textLabel?.text = "\(thought.by): \(thought.text)"
-        cell.detailTextLabel?.text = "\(thought.timestamp)"
+        cell.textLabel?.text = thought.text
+        cell.textLabel?.numberOfLines = 0
+        cell.detailTextLabel?.text = "\(thought.by): \(thought.timestamp.toFriendlyFormat())"
+        cell.backgroundColor = UIColor.colorForString(thought.by)
 
         return cell
     }

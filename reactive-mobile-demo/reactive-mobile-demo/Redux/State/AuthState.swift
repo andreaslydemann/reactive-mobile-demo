@@ -1,7 +1,7 @@
 
 import ReSwift
 
-struct AuthState: StateType {
+struct AuthState: StateType, Equatable {
     var loading: Bool = false
     var authError: String? = nil
     var currentUserId: Int? = nil

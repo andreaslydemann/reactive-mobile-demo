@@ -12,6 +12,14 @@ enum AuthProgressPayload {
 
 struct AuthProgress: Action {
     let payload: AuthProgressPayload
+
+    static func isLogout(_ action: Action) -> Bool {
+        guard let authProgress = action as? AuthProgress,
+            case .logout = authProgress.payload else {
+            return false
+        }
+        return true
+    }
 }
 
 func logoutAction() -> Thunk<AppState> {
@@ -29,6 +37,7 @@ func logoutAction() -> Thunk<AppState> {
 
 func createUserAction(username: String, password: String) -> Thunk<AppState> {
     return Thunk<AppState> { dispatch, getState in
+        dispatch(AuthProgress(payload: .loading))
         SharedAPI.signUp(username: username, password: password)
             .onSuccess { data in
                 authSuccess(json: data.jsonDict, username: username, dispatch: dispatch)
@@ -67,6 +76,8 @@ func authSuccess(json: [String: Any], username: String, dispatch: DispatchFuncti
         return
     }
 
-    let user: User = User(value: ["username": username, "id": id, "jwtToken": token]).save()
+    let user: User = User(value: ["username": username.lowercased(),
+                                  "id": id,
+                                  "jwtToken": token]).save()
     dispatch(AuthProgress(payload: .success(user: user)))
 }

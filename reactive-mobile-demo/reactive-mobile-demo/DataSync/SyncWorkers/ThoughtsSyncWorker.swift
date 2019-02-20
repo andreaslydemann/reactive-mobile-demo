@@ -4,14 +4,19 @@ import ReSwift
 class ThoughtsSyncWorker: StoreSubscriber, Worker  {
     private var fetchNewThoughtsTimer: Timer? = nil
 
-    func run() {}
+    func run() {
+        startPollingForThoughts()
+    }
+
+    func stop() {
+        fetchNewThoughtsTimer?.invalidate()
+    }
 
     init() {
         store.subscribe(self)
     }
 
     deinit {
-        fetchNewThoughtsTimer?.invalidate()
         store.unsubscribe(self)
     }
 
@@ -31,6 +36,7 @@ class ThoughtsSyncWorker: StoreSubscriber, Worker  {
         self.fetchNewThoughtsTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { _ in
             store.dispatch(fetchThoughtsAction())
         })
+        self.fetchNewThoughtsTimer?.fire()
     }
 }
 
