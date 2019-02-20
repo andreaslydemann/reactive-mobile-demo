@@ -97,16 +97,27 @@ func createThoughtAction(text: String) -> Thunk<AppState> {
         }
 
         // Persist the thought locally
-        Thought(value: ["text" : text,
-                        "by" : user.username.lowercased(),
-                        "timestamp": Date()]).save()
+        let by = user.username
+        if Thought.find(by: by, text: text) == nil {
+            Thought(value: ["text" : text,
+                            "by" : by,
+                            "timestamp": Date()]).save()
+        }
 
         SharedAPI.createThought(token: token, text: text)
             .onSuccess({ data in
                 dispatch(CreateThought(payload: .success))
             })
             .onFailure({ error in
-                // TODO: Enqueue for retries
+                // This is a crude retry mechanism.
+                // It would be better to use SwiftQueue or similar
+
+                let delayTime = DispatchTime.now() + .seconds(5)
+                DispatchQueue.global().asyncAfter(deadline: delayTime, execute: {
+                    DispatchQueue.main.async {
+                        dispatch(createThoughtAction(text: text))
+                    }
+                })
                 dispatch(CreateThought(payload: .error(error.userMessage)))
             })
     }

@@ -1,7 +1,7 @@
 
 import ReSwift
 
-class ThoughtsSyncWorker: StoreSubscriber, Worker  {
+class ThoughtsSyncService: StoreSubscriber  {
     private var fetchNewThoughtsTimer: Timer? = nil
 
     func run() {
@@ -42,4 +42,4 @@ class ThoughtsSyncWorker: StoreSubscriber, Worker  {
     }
 }
 
-let sharedThoughtsSyncWorker = ThoughtsSyncWorker()
+let sharedThoughtsSyncWorker = ThoughtsSyncService()

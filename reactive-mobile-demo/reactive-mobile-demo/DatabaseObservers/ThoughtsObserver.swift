@@ -1,7 +1,7 @@
 
 import RealmSwift
 
-class ThoughtsObserver: Worker {
+class ThoughtsObserver {
     private var notificationToken: NotificationToken? = nil
     private static let sharedObserver = { return ThoughtsObserver() }
 
